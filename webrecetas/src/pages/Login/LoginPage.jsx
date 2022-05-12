@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Label,
   Container,
@@ -14,11 +14,24 @@ export function LoginPage() {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
 
+  const [logued, setLogued] = useState(false);
+  const [whatUser, setWhatUser] = useState("");
+
+  useEffect(() => {
+    userValidation(user, pass) ? setLogued(true) : setLogued(false);
+  }, [user, pass]);
+
   const userValidation = (user, pass) => {
     if (user === "pepe" && pass === "1234") {
       return true;
     } else {
       return false;
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (logued) {
+      localStorage.setItem("user", user);
     }
   };
 
@@ -60,12 +73,15 @@ export function LoginPage() {
         </TextField>
         <Button>
           <ConditionalLink to="/" condition={userValidation(user, pass)}>
-            <button>Iniciar Sesion</button>
+            <button onClick={handleButtonClick}>Iniciar Sesion</button>
           </ConditionalLink>
-
-          <button>Registrarse</button>
+          <Link to="/registration">
+            <button>Registrarse</button>
+          </Link>
         </Button>
       </Wrapper>
     </Container>
   );
 }
+
+export default LoginPage;

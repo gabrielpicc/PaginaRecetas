@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 320px;
   height: 420px;
   border-radius: 5%;
-  background: #000;
+  background: #000;//linear-gradient(to right,  #f0a40018 , #00000039);
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -15,6 +15,11 @@ export const Container = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   z-index: -1;
+
+  &.reg-container {
+    width: 350px;
+    height: 500px;
+  }
   /* width: 30%;
   background-color: #000000;
   margin-top: 100px;
@@ -61,7 +66,6 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
-  //flex: auto;
   justify-content: center;
   align-items: center;
 
@@ -102,6 +106,12 @@ export const TextField = styled.div`
 
     ::-webkit-input-placeholder {
       text-align: center;
+    }
+  }
+
+  .reg {
+    ::placeholder {
+      color: #dbd8d8;
     }
   }
 `;

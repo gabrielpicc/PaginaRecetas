@@ -27,6 +27,11 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isLogged, SetIdLogged] = useState(true);
 
+  const handleMenuClicked = () =>{
+    setShowMobileMenu(!showMobileMenu)
+    {document.body.style.overflow='hidden'}
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -50,8 +55,7 @@ const Navbar = () => {
             <MenuItem>
               <StyledLink to="/">
                 <MenuItemLink
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}
-                >
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}>
                   <div>
                     <FaHome />
                     Inicio
@@ -63,8 +67,7 @@ const Navbar = () => {
             <MenuItem>
               <StyledLink to="/my_recepies">
                 <MenuItemLink
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}
-                >
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}>
                   <div>
                     <FaUserAlt />
                     Mis Recetas
@@ -88,17 +91,17 @@ const Navbar = () => {
 
             <MenuItem>
               <StyledLink to="/profile">
-                <LogoContainer onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
                   <GiCook />
-                </LogoContainer>
+                </MenuItemLink>
               </StyledLink>
             </MenuItem>
 
             <MenuItem>
               <StyledLink to="/login">
-                <LogoContainer onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
                   {isLogged ? <RiLogoutBoxRLine /> : <BsFillPersonPlusFill />}
-                </LogoContainer>
+                </MenuItemLink>
               </StyledLink>
             </MenuItem>
           </Menu>

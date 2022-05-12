@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 70px;
   background-color: #000000;
+  border-bottom: 2px solid #f0a500;
 `;
 
 export const Wrapper = styled.div`
@@ -39,12 +40,12 @@ export const LogoContainer = styled.div`
     &:nth-child(3) {
       font-size: 1.75rem;
       font-weight: 500;
-      color: #F0A500;
+      color: #f0a500;
     }
   }
 
   svg {
-    fill: #F0A500;
+    fill: #f0a500;
     margin-right: 0.5rem;
   }
 `;
@@ -102,8 +103,8 @@ export const MenuItemLink = styled.a`
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 0.5rem 2.5rem;
-  color: #F0A500;
+  padding: 0.5rem 1.5rem;
+  color: #f0a500;
   font-family: sans-serif;
   font-size: 1rem;
   font-weight: 300;
@@ -111,9 +112,10 @@ export const MenuItemLink = styled.a`
   transition: 0.5s all ease;
 
   &:hover {
-    color: #fff;
-    background-color: #F0A500;
+    color: #082032;
+    background-color: #f0a500;
     transition: 0.5s all ease;
+    font-size: 1.2rem;
 
     div {
       svg {
@@ -131,8 +133,8 @@ export const MenuItemLink = styled.a`
 
     svg {
       display: none;
-      fill: #F0A500;
-      margin-right: 0.5rem;
+      fill: #f0a500;
+      margin-right: 1rem;
     }
   }
 
@@ -187,25 +189,15 @@ export const MobileIcon = styled.div`
     cursor: pointer;
 
     svg {
-      fill: #F0A500;
+      fill: #f0a500;
       margin-right: 0.5rem;
     }
   }
 `;
 
-export const HideContent = styled.div`
-  display: none;
-  color: red;
-`;
-
-export const showContent = styled.div`
-  display: flex;
-  color: red;
-`;
-
 export const SearchBar = styled.div`
-    display: flex;
-    width: auto;
-    align-items: center;
-    background-color: red;
+  display: flex;
+  width: auto;
+  align-items: center;
+  background-color: red;
 `;
