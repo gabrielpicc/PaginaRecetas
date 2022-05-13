@@ -3,6 +3,9 @@ import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/Login/LoginPage";
 import Navbar from "./componentes/NavBar/Navbar";
 import './index.css'
+import { LoadRecipePage } from "./pages/LoadRecipe/LoadRecipePage";
+import VistaReceta from "./pages/Vista/VistaReceta";
+;
 //import styles from "./App.module.css";
 
 export function App() {
@@ -13,6 +16,8 @@ export function App() {
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/upload_recepies" element={<LoadRecipePage />}></Route>
+          <Route path="/vista_receta" element={<VistaReceta/>}></Route>
         </Routes>
       </main>
     </Router>
