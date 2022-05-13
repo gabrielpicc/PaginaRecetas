@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Label,
     Container,
@@ -10,33 +10,47 @@ import {
     Form,
     Box,
 } from "./VistaReceta.elements";
-import recetas from "./recetas.json";
 
 export function VistaReceta() {
 
-    const [recepies, setRecepies] = useState(recetas);
 
-    const nombre = "";
-    const categorias=[];
-    const dificultad = 1;
-    const ingrefientes=[];
-    const procedimiento="";
-    const id = 2; /* QUE SE PASE ESTO COMO VARIABLE */
+    const receta = {
+        "id": 1,
+        "titulo": "Milanesa con Pure",
+        "dificultad": "5",
+        "categorias": ["Carne", "Verdura"],
+        "ingredientes": ["200 g de carne", "100g de pollo", "2 huevos", "100 g de pescado", "2 zanahorias", "2 tomates"],
+        "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
+        "calificacion": "5",
+        "Procedimiento": "Todo a la olla y revolver por 30 minutos",
+        "status": "activo",
+        "owner": "pepe"
+    }
 
     return (
-        
+
         <Container>
-            {/* {recepies.map(
-                (receta) => (
-                    {receta.id === id} 
-                )
+            <Img alt="Imagen de la Receta" src={receta.url} />
 
-            )} */}
-            <Img alt="Imagen de la Receta" />
-
-            <Label id="label1">Nombre de la Receta</Label>
+            <Label className="titulo" id="label1"> {receta.titulo}</Label>
             <Box>
-                <Label>¡Califica la Receta!</Label>
+                <Label>Calificación:</Label>
+                <label className="estrella">★</label>
+                {receta.calificacion>1 &&(
+                    <label className="estrella">★</label>
+                )}
+                {receta.calificacion>2 &&(
+                    <label className="estrella">★</label>
+                )}
+                {receta.calificacion>3 &&(
+                    <label className="estrella">★</label>
+                )}
+                {receta.calificacion>4 &&(
+                    <label className="estrella">★</label>
+                )}
+            </Box>
+            <Box>
+                <Label>¡Ahora califica tú la Receta!</Label>
                 <Form>
                     <p class="clasificacion">
                         <input id="radio1" type="radio" name="estrellas" value="5" />
@@ -52,26 +66,36 @@ export function VistaReceta() {
                     </p>
                 </Form>
             </Box>
-            
-            <Label>Categoría:</Label>
-            <Label>la categoría</Label>
-            <Box>
-                <Label>Dificultad:</Label>
-                <Label>la dificultad</Label>
-            </Box>
-            <Label>Ingredientes:</Label>
-            <Box className="ingredientes">
-                <ul>
 
+            <Label className="subtitulo">Categoría:</Label>
+            <Box>
+                <ul>
+                    {receta.categorias.map((cat) => (
+                        <li>{cat}</li>
+                    )
+                    )}
                 </ul>
             </Box>
-            <Label>Procedimiento:</Label>
+            <Box>
+                <Label className="separada">Dificultad:</Label>
+                <Label> {receta.dificultad} </Label>
+            </Box>
+            <Label className="subtitulo">Ingredientes:</Label>
+            <Box>
+                <ul>
+                    {receta.ingredientes.map((ing) => (
+                        <li>{ing}</li>
+                    )
+                    )}
+                </ul>
+            </Box>
+            <Box className="ingredientes">
+            </Box>
+            <Label className="subtitulo">Procedimiento:</Label>
+            <Label>{receta.Procedimiento}</Label>
 
         </Container>
     );
-
-
-    document.getElementById("label1").innerText("holaaaa")
 
 }
 

@@ -3,11 +3,11 @@ import { StyledLink } from "../../componentes/NavBar/Navbar.elements";
 
 
 export const Container = styled.div`
-margin: 20px;
-  width: 420px;
-  height: 650px;
-  border-radius: 3%;
-  background: linear-gradient(to right,  #f0a4003e , #00000039);
+  width: 70%;
+  height: 70%;
+  margin: 20px;
+  border-radius: 5%;
+  background: #000;
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -20,38 +20,18 @@ margin: 20px;
 
   overflow: auto;
 
-  ::-webkit-scrollbar {
-    -webkit-appearance: none;
+::-webkit-scrollbar {
+  -webkit-appearance: none;
 }
-  ::-webkit-scrollbar:vertical {
-    width:10px;
+::-webkit-scrollbar:vertical {
+  width:10px;
 }
-  ::-webkit-scrollbar-thumb {
-    background-color: #000;
-    border-radius: 100px;
-    border: 2px solid #ffff;
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 100px;
+  border: 2px solid #ffff;
 }
 
-  .separada{
-    border: 2px solid #f0a500;
-    background-color: #000;
-    width: 40%;
-    margin-right: 15%;
-  }
-
-  .titulo{
-    border: 2px solid #f0a500;
-    background-color: #000;
-    width: 70%;
-    margin-left: 15%;
-  }
-
-  .subtitulo{
-    border: 2px solid #f0a500;
-    background-color: #000;
-    width: 40%;
-    margin-left: 15%;
-  }
 `;
 
 export const Wrapper = styled.div`
@@ -89,8 +69,6 @@ export const Label = styled.div`
   padding: 7px;
   font-weight: bold;
   text-align: center;
-
-  
 `;
 
 export const TextField = styled.div`
@@ -164,58 +142,52 @@ export const Button = styled.div`
   }
 `;
 
-export const Img = styled.img`
-margin: 9px;
-    width: 375px;
-    height: 180px;
-    border: 2px solid #f0a500;
-    border-radius: 5%;
-`;
-
-export const Form = styled.form`
-    width: 250px;
-    margin: 5px;
-    height: 50px;
-
-    .clasificacion{
-        direction: rtl;
-        unicode-bidi: bidi-override;
-    }
-
-    p{
-        text-align: center;
-    }
-
-    label{
-        font-size: 25px;
-    }
-    label:hover,
-    label:hover ~ label{
-        color: #ffa60065;
-        
-    }
-
-    input[type="radio"]{
-        display: none;
-    }
-    input[type="radio"]:checked ~ label {
-        color: orange;
-    }
-`;
-
 export const Box = styled.div`
-  align-content: center;
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px;
+    height: 50px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    justify-content: center;
 
-  .estrella{
-    color: orange;
-    font-size: 25px;
+    button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border: 2px solid #f0a500;
+    color: #fff;
+    border-radius: 4px;
+    transition: ease-out 0.3s;
+    font-weight: bold;
+    font-size: 0.6rem;
+    outline: none;
+    position: relative;
+    background-color: #000;
+    z-index: 1;
   }
 
-  .ingredientes{
-      align-content: left;
+  button:hover {
+    color: #000;
+    cursor: pointer;
+  }
 
+  button:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #f0a500;
+  }
+
+  button:hover:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
   }
 `;

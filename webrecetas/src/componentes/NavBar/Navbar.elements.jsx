@@ -15,6 +15,22 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: auto;
+
+  .busqueda{
+
+    
+    &:hover {
+    color: #fff;
+    background-color: #F0A500;
+    transition: 0.5s all ease;
+
+    div {
+      svg {
+        fill: #082032;
+      }
+    }
+  }
+  }
 `;
 
 export const LogoLink = styled(Link)`
@@ -204,8 +220,14 @@ export const showContent = styled.div`
 `;
 
 export const SearchBar = styled.div`
-    display: flex;
-    width: auto;
-    align-items: center;
-    background-color: red;
+    background-color: #F0A500;
+
+    input{
+      margin: 10px;
+      width: 150px;
+      height: 50px;
+      font-size: 15px;
+    }
 `;
+
+
