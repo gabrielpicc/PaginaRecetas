@@ -27,12 +27,8 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isLogged, SetIdLogged] = useState(true);
 
-  const handleMenuClicked = () =>{
-    setShowMobileMenu(!showMobileMenu)
-    {document.body.style.overflow='hidden'}
-  };
 
-  return (
+  return JSON.parse(localStorage.getItem("isLogued")) ? (
     <Container>
       <Wrapper>
         <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
@@ -55,7 +51,8 @@ const Navbar = () => {
             <MenuItem>
               <StyledLink to="/">
                 <MenuItemLink
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
                   <div>
                     <FaHome />
                     Inicio
@@ -67,7 +64,8 @@ const Navbar = () => {
             <MenuItem>
               <StyledLink to="/my_recepies">
                 <MenuItemLink
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
                   <div>
                     <FaUserAlt />
                     Mis Recetas
@@ -91,7 +89,9 @@ const Navbar = () => {
 
             <MenuItem>
               <StyledLink to="/profile">
-                <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
                   <GiCook />
                 </MenuItemLink>
               </StyledLink>
@@ -99,8 +99,92 @@ const Navbar = () => {
 
             <MenuItem>
               <StyledLink to="/login">
-                <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                  {isLogged ? <RiLogoutBoxRLine /> : <BsFillPersonPlusFill />}
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <RiLogoutBoxRLine onClick={localStorage.setItem("isLogued", false)}/>
+                </MenuItemLink>
+              </StyledLink>
+            </MenuItem>
+          </Menu>
+        </IconContext.Provider>
+      </Wrapper>
+    </Container>
+  ) : (
+    <Container>
+      <Wrapper>
+        <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
+          <LogoLink to="/">
+            <LogoContainer>
+              <GiCook />
+              <p>Star</p>
+              <p>Woks</p>
+            </LogoContainer>
+          </LogoLink>
+
+          <SearchBar>
+            <p></p>
+          </SearchBar>
+
+          <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            {showMobileMenu ? <FaTimes /> : <FaBars />}
+          </MobileIcon>
+          <Menu open={showMobileMenu}>
+            <MenuItem>
+              <StyledLink to="/">
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <div>
+                    <FaHome />
+                    Inicio
+                  </div>
+                </MenuItemLink>
+              </StyledLink>
+            </MenuItem>
+
+            <MenuItem>
+              <StyledLink to="/my_recepies">
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <div>
+                    <FaUserAlt />
+                    Mis Recetas
+                  </div>
+                </MenuItemLink>
+              </StyledLink>
+            </MenuItem>
+
+            <MenuItem>
+              <StyledLink to="/upload_recepies">
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <div>
+                    <FaBriefcase />
+                    Subir Recetas
+                  </div>
+                </MenuItemLink>
+              </StyledLink>
+            </MenuItem>
+
+            <MenuItem>
+              <StyledLink to="/profile">
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <GiCook />
+                </MenuItemLink>
+              </StyledLink>
+            </MenuItem>
+
+            <MenuItem>
+              <StyledLink to="/login">
+                <MenuItemLink
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <BsFillPersonPlusFill />
                 </MenuItemLink>
               </StyledLink>
             </MenuItem>

@@ -1,227 +1,227 @@
 [{
     "id": 1,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pepe@gmail.com"
+    "owner": "pepe"
 },{
     "id": 2,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 3,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 4,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 5,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 6,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 7,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 8,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 9,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 10,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 11,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 12,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 13,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 14,
     "titulo": "arroz con pollo",
-    "dificultad": "5",
+    "dificultad": "media",
     "categorias": ["carne","verdura","iuwkerfgh"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "5", 
     "status": "activo",
-    "owner": "pepe@gmail.com"
+    "owner": "pepe"
 },{
     "id": 15,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 16,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 17,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 18,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 19,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 20,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 21,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 22,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 23,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 24,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pablo@gmail.com"
+    "owner": "pablo"
 },{
     "id": 25,
-    "titulo": "Milanesa con pure",
-    "dificultad": "5",
+    "titulo": "milanesa con pure",
+    "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
     "calificacion": "0", 
     "status": "activo",
-    "owner": "pepe@gmail.com"
+    "owner": "pepe"
 }
 ]

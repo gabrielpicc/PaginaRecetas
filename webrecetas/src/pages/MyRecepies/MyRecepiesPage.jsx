@@ -1,4 +1,6 @@
 import { useState, Fragment } from "react";
+import Navbar from "../../componentes/NavBar/Navbar";
+import { NoLogUserCont, Wrapper } from "../NotLoguedPage.elements";
 import EditableRows from "./EditableRows";
 import { Container } from "./MyRecepiesPage.elements";
 import ReadOnlyRows from "./ReadOnlyRows";
@@ -82,31 +84,37 @@ export function MyRecepiesPage() {
     localStorage.getItem("user");
   };
 
-  return (
+  return JSON.parse(localStorage.getItem("isLogued")) ? (
     <Container>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <tbody>
-            {recepies.filter(receta => receta.owner === localStorage.getItem("user")).map((receta) => (
-              <Fragment>
-                {editRecepieId === receta.id ? (
-                  <EditableRows
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    handleCancelClick={handleCancelClick}
-                  />
-                ) : (
-                  <ReadOnlyRows
-                    receta={receta}
-                    handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
-                  />
-                )}
-              </Fragment>
-            ))}
+            {recepies
+              .filter((receta) => receta.owner === localStorage.getItem("user"))
+              .map((receta) => (
+                <Fragment>
+                  {editRecepieId === receta.id ? (
+                    <EditableRows
+                      editFormData={editFormData}
+                      handleEditFormChange={handleEditFormChange}
+                      handleCancelClick={handleCancelClick}
+                    />
+                  ) : (
+                    <ReadOnlyRows
+                      receta={receta}
+                      handleEditClick={handleEditClick}
+                      handleDeleteClick={handleDeleteClick}
+                    />
+                  )}
+                </Fragment>
+              ))}
           </tbody>
         </table>
       </form>
     </Container>
+  ) : (
+    <NoLogUserCont>
+      <div>Debes iniciar sesion para poder ver tus recetas</div>
+    </NoLogUserCont>
   );
 }

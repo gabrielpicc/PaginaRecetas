@@ -22,7 +22,7 @@ export function LoginPage() {
   }, [user, pass]);
 
   const userValidation = (user, pass) => {
-    if (user === "pepe" && pass === "1234") {
+    if (user === "pepe@gmail.com" && pass === "1234") {
       return true;
     } else {
       return false;
@@ -32,6 +32,7 @@ export function LoginPage() {
   const handleButtonClick = () => {
     if (logued) {
       localStorage.setItem("user", user);
+      localStorage.setItem("isLogued", true);
     }
   };
 
@@ -39,48 +40,50 @@ export function LoginPage() {
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
   return (
-    <Container>
-      <Title>
-        <h3>
-          <GiDeathStar />!
-        </h3>
-        <h3>Bienvenido a Star</h3>
-        <h3>
-          Woks¡
-          <GiDeathStar />
-        </h3>
-      </Title>
-      <Wrapper>
-        <Label>
-          <label>Email</label>
-        </Label>
-        <TextField>
-          <input
-            placeholder="Ingrese su Email"
-            type="text"
-            onChange={(e) => setUser(e.target.value)}
-          />
-        </TextField>
-        <Label>
-          <label>Contraseña</label>
-        </Label>
-        <TextField>
-          <input
-            placeholder="Ingrese su Contraseña"
-            type="password"
-            onChange={(e) => setPass(e.target.value)}
-          />
-        </TextField>
-        <Button>
-          <ConditionalLink to="/" condition={userValidation(user, pass)}>
-            <button onClick={handleButtonClick}>Iniciar Sesion</button>
-          </ConditionalLink>
-          <Link to="/registration">
-            <button>Registrarse</button>
-          </Link>
-        </Button>
-      </Wrapper>
-    </Container>
+    !JSON.parse(localStorage.getItem("isLogued")) && (
+      <Container>
+        <Title>
+          <h3>
+            <GiDeathStar />!
+          </h3>
+          <h3>Bienvenido a Star</h3>
+          <h3>
+            Woks¡
+            <GiDeathStar />
+          </h3>
+        </Title>
+        <Wrapper>
+          <Label>
+            <label>Email</label>
+          </Label>
+          <TextField>
+            <input
+              placeholder="Ingrese su Email"
+              type="text"
+              onChange={(e) => setUser(e.target.value)}
+            />
+          </TextField>
+          <Label>
+            <label>Contraseña</label>
+          </Label>
+          <TextField>
+            <input
+              placeholder="Ingrese su Contraseña"
+              type="password"
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </TextField>
+          <Button>
+            <ConditionalLink to="/" condition={userValidation(user, pass)}>
+              <button onClick={handleButtonClick}>Iniciar Sesion</button>
+            </ConditionalLink>
+            <Link to="/registration">
+              <button>Registrarse</button>
+            </Link>
+          </Button>
+        </Wrapper>
+      </Container>
+    )
   );
 }
 

@@ -3,10 +3,11 @@ import { StyledLink } from "../../componentes/NavBar/Navbar.elements";
 
 
 export const Container = styled.div`
-  width: 320px;
-  height: 420px;
+margin: 20px;
+  width: 400px;
+  height: 650px;
   border-radius: 5%;
-  background: #000;//linear-gradient(to right,  #f0a40018 , #00000039);
+  background: linear-gradient(to right,  #f0a4003e , #00000039);
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -16,11 +17,6 @@ export const Container = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   z-index: -1;
-
-  &.reg-container {
-    width: 350px;
-    height: 500px;
-  }
   /* width: 30%;
   background-color: #000000;
   margin-top: 100px;
@@ -67,6 +63,7 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
+  //flex: auto;
   justify-content: center;
   align-items: center;
 
@@ -107,12 +104,6 @@ export const TextField = styled.div`
 
     ::-webkit-input-placeholder {
       text-align: center;
-    }
-  }
-
-  .reg {
-    ::placeholder {
-      color: #dbd8d8;
     }
   }
 `;
@@ -168,5 +159,65 @@ export const Button = styled.div`
     right: 0;
     opacity: 1;
     z-index: -1;
+  }
+`;
+
+export const Img = styled.img`
+margin: 9px;
+    width: 375px;
+    height: 200px;
+`;
+
+export const Form = styled.form`
+    width: 250px;
+    margin: 5px;
+    height: 50px;
+
+    .clasificacion{
+        direction: rtl;
+        unicode-bidi: bidi-override;
+    }
+
+    p{
+        text-align: center;
+    }
+
+    label{
+        font-size: 25px;
+    }
+    label:hover,
+    label:hover ~ label{
+        color: #ffa60065;
+        
+    }
+
+    input[type="radio"]{
+        display: none;
+    }
+    input[type="radio"]:checked ~ label {
+        color: orange;
+    }
+`;
+
+export const Box = styled.div`
+  align-content: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+
+  .ingredientes{
+      align-content: left;
+
+  }
+
+  ul{
+      list-style:none;
+    }
+
+  li::before{
+    font-family:"Font Awesome 5 Free";
+    size: 20px;
+    content:"\f0eb";
+	margin-right:8px;
   }
 `;

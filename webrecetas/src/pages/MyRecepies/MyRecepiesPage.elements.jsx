@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 10%;
-  
 
   th,
   td {
@@ -17,7 +16,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     background-color: #000000;
-
 
     button {
       width: 100%;
