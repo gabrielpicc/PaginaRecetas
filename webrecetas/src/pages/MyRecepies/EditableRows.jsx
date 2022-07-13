@@ -24,9 +24,11 @@ export function EditableRows({
           onChange={handleEditFormChange}
           value={editFormData.dificultad}
         >
-          <option>Facil</option>
-          <option>Media</option>
-          <option>Dificil</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
         </select>
       </td>
       <td>
@@ -59,10 +61,12 @@ export function EditableRows({
           value={editFormData.status}
         />
       </td>
-      <button type="submit">Save</button>
-      <button type="button" onClick={handleCancelClick}>
-        Cancel
-      </button>
+      <div>
+        <button type="submit">Save</button>
+        <button type="button" onClick={handleCancelClick}>
+          Cancel
+        </button>
+      </div>
     </tr>
   );
 }

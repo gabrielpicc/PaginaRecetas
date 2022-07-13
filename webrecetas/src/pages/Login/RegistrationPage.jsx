@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { register } from "../../controller/miApp.controller";
+import { Navigate } from "react-router-dom";
 import {
   Container,
   TextField,
@@ -11,40 +13,65 @@ import { Link } from "react-router-dom";
 
 export function RegistrationPage() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState("");
   const [pass, setPass] = useState("");
-  const [confPass, setConfPass] = useState("");
+  const [usuarioValido, setUsuarioValido] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify({
-        name: name,
-        last_name: lastName,
-        email: email,
-        phone: phone,
-        pass: pass,
-        confPass: confPass,
-      })
-    );
-  });
+  const registerUser = () => {
+    if (
+      (nombre !== "" && pass !== "",
+      apellido !== "",
+      email !== "" && telefono !== "")
+    ) {
+      validateRegistration();
+    } else {
+      alert("Alguno de los campos esta vacio");
+    }
+  };
+
+  const validateRegistration = async function () {
+    let datos = {
+      email: email,
+      pass: pass,
+      nombre: nombre,
+      telefono: telefono,
+      apellido: apellido,
+    };
+    let getRegistration = await register(datos);
+    console.log(getRegistration.rdo);
+    if (getRegistration.rdo === 0) {
+      setUsuarioValido(true);
+      console.log("tas adentro perri");
+    }
+    if (getRegistration.rdo === 1) {
+      alert(getRegistration.mensaje);
+    }
+  };
+
+  const redirect = () => {
+    console.log("zorriiiita");
+    if (usuarioValido) {
+      return <Navigate to="/" />;
+    }
+  };
 
   return (
-    <Container className="reg-container">
-      <Title>
-        <h3>
-          {<GiDeathStar />} Empeza por registrarte {<GiDeathStar />}
-        </h3>
-      </Title>
-      <form typeof="submit">
+    <div>
+      {redirect()}
+      <Container className="reg-container">
+        <Title>
+          <h3>
+            {<GiDeathStar />} Empeza por registrarte {<GiDeathStar />}
+          </h3>
+        </Title>
         <Wrapper>
           <TextField>
             <input
               placeholder="Nombre"
               required
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setNombre(e.target.value)}
               className="reg"
             />
           </TextField>
@@ -52,7 +79,7 @@ export function RegistrationPage() {
             <input
               required
               placeholder="Apellido"
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => setApellido(e.target.value)}
               className="reg"
             />
           </TextField>
@@ -68,7 +95,7 @@ export function RegistrationPage() {
             <input
               required
               placeholder="Telefono"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setTelefono(e.target.value)}
               className="reg"
             />
           </TextField>
@@ -82,12 +109,12 @@ export function RegistrationPage() {
             />
           </TextField>
           <Button>
-            <Link to="/">
-              <button type="submit">Confirmar</button>
-            </Link>
+            <button type="submit" onClick={registerUser}>
+              Confirmar
+            </button>
           </Button>
         </Wrapper>
-      </form>
-    </Container>
+      </Container>
+    </div>
   );
 }

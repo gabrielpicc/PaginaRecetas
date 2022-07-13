@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaBars,
   FaTimes,
@@ -10,6 +10,7 @@ import { GiCook } from "react-icons/gi";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { IconContext } from "react-icons/lib";
+import { GoSearch } from "react-icons/go";
 import {
   Container,
   LogoContainer,
@@ -22,13 +23,21 @@ import {
   LogoLink,
   SearchBar,
 } from "./Navbar.elements";
+import JSONDATA from "./recetas.json";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isLogged, SetIdLogged] = useState(true);
 
 
-  return JSON.parse(localStorage.getItem("isLogued")) ? (
+  const handleClickEvent = () => {
+    setShowMobileMenu(!showMobileMenu);
+    localStorage.clear();
+  };
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  return JSON.parse(localStorage.getItem("email") !== null) ? (
     <Container>
       <Wrapper>
         <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
@@ -40,10 +49,37 @@ const Navbar = () => {
             </LogoContainer>
           </LogoLink>
 
-          <SearchBar>
-            <p></p>
-          </SearchBar>
-
+          <div>
+            <SearchBar>
+              <input
+                type="text"
+                placeholder="Busqueda"
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
+              />
+              {JSONDATA.filter((val) => {
+                if (searchTerm === "") {
+                  return val;
+                } else if (
+                  val.titulo.toLowerCase().indexOf(searchTerm.toLowerCase()) >
+                  -1
+                ) {
+                  return val;
+                }
+              }).map((val, key) => {
+                //return console.log("");
+              })}
+            </SearchBar>
+          </div>
+          <div>
+            <StyledLink className="busqueda" to="/search">
+              <LogoContainer /* onClick={() => setShowMobileMenu(!showMobileMenu)} */
+              >
+                <GoSearch />
+              </LogoContainer>
+            </StyledLink>
+          </div>
           <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
             {showMobileMenu ? <FaTimes /> : <FaBars />}
           </MobileIcon>
@@ -99,10 +135,8 @@ const Navbar = () => {
 
             <MenuItem>
               <StyledLink to="/login">
-                <MenuItemLink
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}
-                >
-                  <RiLogoutBoxRLine onClick={localStorage.setItem("isLogued", false)}/>
+                <MenuItemLink onClick={handleClickEvent}>
+                  <RiLogoutBoxRLine />
                 </MenuItemLink>
               </StyledLink>
             </MenuItem>
@@ -122,9 +156,37 @@ const Navbar = () => {
             </LogoContainer>
           </LogoLink>
 
-          <SearchBar>
-            <p></p>
-          </SearchBar>
+          <div>
+            <SearchBar>
+              <input
+                type="text"
+                placeholder="Busqueda"
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
+              />
+              {JSONDATA.filter((val) => {
+                if (searchTerm === "") {
+                  return val;
+                } else if (
+                  val.titulo.toLowerCase().indexOf(searchTerm.toLowerCase()) >
+                  -1
+                ) {
+                  return val;
+                }
+              }).map((val, key) => {
+                // return console.log("");
+              })}
+            </SearchBar>
+          </div>
+          <div>
+            <StyledLink className="busqueda" to="/search">
+              <LogoContainer /* onClick={() => setShowMobileMenu(!showMobileMenu)} */
+              >
+                <GoSearch />
+              </LogoContainer>
+            </StyledLink>
+          </div>
 
           <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
             {showMobileMenu ? <FaTimes /> : <FaBars />}

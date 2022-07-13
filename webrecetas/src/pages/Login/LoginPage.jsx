@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { login, getuser } from "../../controller/miApp.controller";
 import {
   Label,
   Container,
@@ -8,39 +9,52 @@ import {
   Wrapper,
 } from "./LoginPage.elements";
 import { GiDeathStar } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export function LoginPage() {
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [usuarioValido, setUsuarioValido] = useState(false);
 
-  const [logued, setLogued] = useState(false);
-  const [whatUser, setWhatUser] = useState("");
+  const validarLogin = async function () {
+    let datos = {
+      email: email,
+      password: password,
+    };
+    let getLogin = await login(datos);
+    console.log(getLogin.rdo);
+    if (getLogin.rdo === 0) {
+      setUsuarioValido(true);
 
-  useEffect(() => {
-    userValidation(user, pass) ? setLogued(true) : setLogued(false);
-  }, [user, pass]);
+    }
+    if (getLogin.rdo === 1) {
+      alert(getLogin.mensaje);
+    }
+  };
 
-  const userValidation = (user, pass) => {
-    if (user === "pepe@gmail.com" && pass === "1234") {
-      return true;
+  //Valido campos y llamo endpoint
+  const loginUser = () => {
+    if (email !== "" && password !== "") {
+      validarLogin();
     } else {
-      return false;
+      alert("Debe completar usuario y password");
     }
   };
 
-  const handleButtonClick = () => {
-    if (logued) {
-      localStorage.setItem("user", user);
-      localStorage.setItem("isLogued", true);
-    }
+  const getuserr = async function () {
+    let getLoefwfgin = await getuser();
+    console.log(getLoefwfgin);
   };
 
-  const ConditionalLink = ({ children, to, condition }) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+  const redirect = () => {
+    if (usuarioValido) {
+      return <Navigate to="/" />;
+    }
+  };
 
   return (
-    !JSON.parse(localStorage.getItem("isLogued")) && (
+    <div>
+      {redirect()}
       <Container>
         <Title>
           <h3>
@@ -60,7 +74,7 @@ export function LoginPage() {
             <input
               placeholder="Ingrese su Email"
               type="text"
-              onChange={(e) => setUser(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </TextField>
           <Label>
@@ -70,20 +84,18 @@ export function LoginPage() {
             <input
               placeholder="Ingrese su Contraseña"
               type="password"
-              onChange={(e) => setPass(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </TextField>
           <Button>
-            <ConditionalLink to="/" condition={userValidation(user, pass)}>
-              <button onClick={handleButtonClick}>Iniciar Sesion</button>
-            </ConditionalLink>
+            <button onClick={loginUser}>Iniciar Sesion</button>
             <Link to="/registration">
               <button>Registrarse</button>
             </Link>
           </Button>
         </Wrapper>
       </Container>
-    )
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 [{
     "id": 1,
-    "titulo": "milanesa con pure",
+    "titulo": "milanesa con papa fritas",
     "dificultad": "media",
     "categorias": ["carne","verdura"],
     "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
@@ -9,10 +9,10 @@
     "owner": "pepe"
 },{
     "id": 2,
-    "titulo": "milanesa con pure",
+    "titulo": "Arroz con Pollo",
     "dificultad": "media",
-    "categorias": ["carne","verdura"],
-    "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
+    "categorias": ["Pollo","verdura"],
+    "url": "https://www.recetasderechupete.com/wp-content/uploads/2020/11/Arroz-con-pollo-cubano-3.jpg",
     "calificacion": "0", 
     "status": "activo",
     "owner": "pablo"
