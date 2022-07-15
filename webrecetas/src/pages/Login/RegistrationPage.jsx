@@ -43,7 +43,6 @@ export function RegistrationPage() {
     console.log(getRegistration.rdo);
     if (getRegistration.rdo === 0) {
       setUsuarioValido(true);
-      console.log("tas adentro perri");
     }
     if (getRegistration.rdo === 1) {
       alert(getRegistration.mensaje);
@@ -51,7 +50,6 @@ export function RegistrationPage() {
   };
 
   const redirect = () => {
-    console.log("zorriiiita");
     if (usuarioValido) {
       return <Navigate to="/" />;
     }

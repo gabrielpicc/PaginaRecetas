@@ -34,7 +34,7 @@ export function App() {
           <Route path="/upload_recepies" element={<LoadRecipePage />}></Route>
 
           <Route path="/profile" element={<ProfilePage />}></Route>
-          <Route path="/vista_receta" element={<VistaReceta />}></Route>
+          <Route path="/vista_receta/:receta_id" element={<VistaReceta />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
         </Routes>
       </main>
