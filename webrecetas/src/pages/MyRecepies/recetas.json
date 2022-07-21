@@ -1,0 +1,74 @@
+[{
+    "id": 1,
+    "titulo": "Milanesa con pure",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pepe@gmail.com"
+},{
+    "id": 2,
+    "titulo": "Arroz con Pollo",
+    "dificultad": "media",
+    "categorias": ["Pollo","verdura"],
+    "url": "https://www.recetasderechupete.com/wp-content/uploads/2020/11/Arroz-con-pollo-cubano-3.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pablo@gmail.com"
+},{
+    "id": 3,
+    "titulo": "Fideos a la bolognesa",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://comidaschilenas.com/wp-content/uploads/2019/07/Receta-de-espaguetis-a-la-bolo%C3%B1esa-chilenos.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pepe@gmail.com"
+},{
+    "id": 4,
+    "titulo": "Sopa de calabaza",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://www.recetas-argentinas.com/base/stock/Recipe/304-image/304-image_web.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pepe@gmail.com"
+},{
+    "id": 5,
+    "titulo": "Tarta de verdura",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://www.clarin.com/img/2020/06/05/OSoK3fQ0r_340x340__1.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pablo@gmail.com"
+},{
+    "id": 6,
+    "titulo": "Salmon ahumado",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://www.hola.com/imagenes/cocina/recetas/2016113090067/crostini-salmon-ahumado/0-755-908/crostini-salmon-ahumado-m.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pablo@gmail.com"
+},{
+    "id": 7,
+    "titulo": "Bife de chorizo",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://animalgourmet.com/wp-content/uploads/2022/02/1280px-Bife_de_chorizo_a_punto_01.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pablo@gmail.com"
+},{
+    "id": 8,
+    "titulo": "Chocotorta",
+    "dificultad": "5",
+    "categorias": ["carne","verdura"],
+    "url": "https://www.clarin.com/img/2020/07/15/la-chocotorta-perfecta-planeta___qH4UH5dLO_1200x630__1.jpg",
+    "calificacion": "0", 
+    "status": "activo",
+    "owner": "pablo@gmail.com"
+}
+]

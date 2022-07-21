@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { login, getuser } from "../../controller/miApp.controller";
 import {
   Label,
   Container,
@@ -8,64 +9,93 @@ import {
   Wrapper,
 } from "./LoginPage.elements";
 import { GiDeathStar } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export function LoginPage() {
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [usuarioValido, setUsuarioValido] = useState(false);
 
-  const userValidation = (user, pass) => {
-    if (user === "pepe" && pass === "1234") {
-      return true;
-    } else {
-      return false;
+  const validarLogin = async function () {
+    let datos = {
+      email: email,
+      password: password,
+    };
+    let getLogin = await login(datos);
+    console.log(getLogin.rdo);
+    if (getLogin.rdo === 0) {
+      setUsuarioValido(true);
+    }
+    if (getLogin.rdo === 1) {
+      alert(getLogin.mensaje);
     }
   };
 
-  const ConditionalLink = ({ children, to, condition }) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+  //Valido campos y llamo endpoint
+  const loginUser = () => {
+    if (email !== "" && password !== "") {
+      validarLogin();
+    } else {
+      alert("Debe completar usuario y password");
+    }
+  };
+
+  const getuserr = async function () {
+    let getLoefwfgin = await getuser();
+    console.log(getLoefwfgin);
+  };
+
+  const redirect = () => {
+    if (usuarioValido) {
+      return <Navigate to="/" />;
+    }
+  };
 
   return (
-    <Container>
-      <Title>
-        <h3>
-          <GiDeathStar />!
-        </h3>
-        <h3>Bienvenido a Star</h3>
-        <h3>
-          Woks¡
-          <GiDeathStar />
-        </h3>
-      </Title>
-      <Wrapper>
-        <Label>
-          <label>Email</label>
-        </Label>
-        <TextField>
-          <input
-            placeholder="Ingrese su Email"
-            type="text"
-            onChange={(e) => setUser(e.target.value)}
-          />
-        </TextField>
-        <Label>
-          <label>Contraseña</label>
-        </Label>
-        <TextField>
-          <input
-            placeholder="Ingrese su Contraseña"
-            type="password"
-            onChange={(e) => setPass(e.target.value)}
-          />
-        </TextField>
-        <Button>
-          <ConditionalLink to="/" condition={userValidation(user, pass)}>
-            <button>Iniciar Sesion</button>
-          </ConditionalLink>
-
-          <button>Registrarse</button>
-        </Button>
-      </Wrapper>
-    </Container>
+    <div>
+      {redirect()}
+      <Container>
+        <Title>
+          <h3>
+            <GiDeathStar />!
+          </h3>
+          <h3>Bienvenido a Star</h3>
+          <h3>
+            Woks¡
+            <GiDeathStar />
+          </h3>
+        </Title>
+        <Wrapper>
+          <Label>
+            <label>Email</label>
+          </Label>
+          <TextField>
+            <input
+              placeholder="Ingrese su Email"
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </TextField>
+          <Label>
+            <label>Contraseña</label>
+          </Label>
+          <TextField>
+            <input
+              placeholder="Ingrese su Contraseña"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </TextField>
+          <Button>
+            <button onClick={loginUser}>Iniciar Sesion</button>
+            <Link to="/registration">
+              <button>Registrarse</button>
+            </Link>
+          </Button>
+        </Wrapper>
+      </Container>
+    </div>
   );
 }
+
+export default LoginPage;

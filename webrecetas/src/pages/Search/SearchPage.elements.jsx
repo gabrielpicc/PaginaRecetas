@@ -3,10 +3,11 @@ import { StyledLink } from "../../componentes/NavBar/Navbar.elements";
 
 
 export const Container = styled.div`
-  width: 320px;
-  height: 420px;
+  width: 70%;
+  height: 70%;
+  margin: 20px;
   border-radius: 5%;
-  background: #000;//linear-gradient(to right,  #f0a40018 , #00000039);
+  background: #000;
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -17,45 +18,20 @@ export const Container = styled.div`
   justify-content: space-between;
   z-index: -1;
 
-  &.reg-container {
-    width: 350px;
-    height: 500px;
-  }
-  /* width: 30%;
-  background-color: #000000;
-  margin-top: 100px;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
+  overflow: auto;
 
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    align-items: center;
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+::-webkit-scrollbar:vertical {
+  width:10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 100px;
+  border: 2px solid #ffff;
+}
 
-    div {
-      width: 30%;
-      justify-content: space-between;
-    }
-  }
-
-  @media screen and (max-width: 880px) {
-    div {
-      width: 40%;
-      justify-content: space-between;
-    }
-  }
-  @media screen and (max-width: 500px) {
-    div {
-      width: 60%;
-      justify-content: space-between;
-    }
-  }
-  @media screen and (max-width: 260px) {
-    div {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }*/
 `;
 
 export const Wrapper = styled.div`
@@ -67,6 +43,7 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
+  //flex: auto;
   justify-content: center;
   align-items: center;
 
@@ -109,12 +86,6 @@ export const TextField = styled.div`
       text-align: center;
     }
   }
-
-  .reg {
-    ::placeholder {
-      color: #dbd8d8;
-    }
-  }
 `;
 
 export const Button = styled.div`
@@ -147,6 +118,56 @@ export const Button = styled.div`
 
   button:hover {
     color: #fff;
+    cursor: pointer;
+  }
+
+  button:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #f0a500;
+  }
+
+  button:hover:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+  }
+`;
+
+export const Box = styled.div`
+    height: 50px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    justify-content: center;
+
+    button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border: 2px solid #f0a500;
+    color: #fff;
+    border-radius: 4px;
+    transition: ease-out 0.3s;
+    font-weight: bold;
+    font-size: 0.6rem;
+    outline: none;
+    position: relative;
+    background-color: #000;
+    z-index: 1;
+  }
+
+  button:hover {
+    color: #000;
     cursor: pointer;
   }
 

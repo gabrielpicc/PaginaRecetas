@@ -3,10 +3,11 @@ import { StyledLink } from "../../componentes/NavBar/Navbar.elements";
 
 
 export const Container = styled.div`
-  width: 320px;
-  height: 420px;
-  border-radius: 5%;
-  background: #000;//linear-gradient(to right,  #f0a40018 , #00000039);
+margin: 20px;
+  width: 420px;
+  height: 650px;
+  border-radius: 3%;
+  background: linear-gradient(to right,  #f0a4003e , #00000039);
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -17,45 +18,40 @@ export const Container = styled.div`
   justify-content: space-between;
   z-index: -1;
 
-  &.reg-container {
-    width: 350px;
-    height: 500px;
-  }
-  /* width: 30%;
-  background-color: #000000;
-  margin-top: 100px;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
+  overflow: auto;
 
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    align-items: center;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+  ::-webkit-scrollbar:vertical {
+    width:10px;
+}
+  ::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border-radius: 100px;
+    border: 2px solid #ffff;
+}
 
-    div {
-      width: 30%;
-      justify-content: space-between;
-    }
+  .separada{
+    border: 2px solid #f0a500;
+    background-color: #000;
+    width: 40%;
+    margin-right: 15%;
   }
 
-  @media screen and (max-width: 880px) {
-    div {
-      width: 40%;
-      justify-content: space-between;
-    }
+  .titulo{
+    border: 2px solid #f0a500;
+    background-color: #000;
+    width: 70%;
+    margin-left: 15%;
   }
-  @media screen and (max-width: 500px) {
-    div {
-      width: 60%;
-      justify-content: space-between;
-    }
+
+  .subtitulo{
+    border: 2px solid #f0a500;
+    background-color: #000;
+    width: 40%;
+    margin-left: 15%;
   }
-  @media screen and (max-width: 260px) {
-    div {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }*/
 `;
 
 export const Wrapper = styled.div`
@@ -67,6 +63,7 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
+  //flex: auto;
   justify-content: center;
   align-items: center;
 
@@ -92,6 +89,8 @@ export const Label = styled.div`
   padding: 7px;
   font-weight: bold;
   text-align: center;
+
+  
 `;
 
 export const TextField = styled.div`
@@ -107,12 +106,6 @@ export const TextField = styled.div`
 
     ::-webkit-input-placeholder {
       text-align: center;
-    }
-  }
-
-  .reg {
-    ::placeholder {
-      color: #dbd8d8;
     }
   }
 `;
@@ -168,5 +161,61 @@ export const Button = styled.div`
     right: 0;
     opacity: 1;
     z-index: -1;
+  }
+`;
+
+export const Img = styled.img`
+margin: 9px;
+    width: 375px;
+    height: 180px;
+    border: 2px solid #f0a500;
+    border-radius: 5%;
+`;
+
+export const Form = styled.form`
+    width: 250px;
+    margin: 5px;
+    height: 50px;
+
+    .clasificacion{
+        direction: rtl;
+        unicode-bidi: bidi-override;
+    }
+
+    p{
+        text-align: center;
+    }
+
+    label{
+        font-size: 25px;
+    }
+    label:hover,
+    label:hover ~ label{
+        color: #ffa60065;
+        
+    }
+
+    input[type="radio"]{
+        display: none;
+    }
+    input[type="radio"]:checked ~ label {
+        color: orange;
+    }
+`;
+
+export const Box = styled.div`
+  align-content: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+
+  .estrella{
+    color: orange;
+    font-size: 25px;
+  }
+
+  .ingredientes{
+      align-content: left;
+
   }
 `;
