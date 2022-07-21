@@ -5,11 +5,13 @@ const urlWebServices = {
   login: urlApi + "api/login",
   register: urlApi + "api/signup",
   getuser: urlApi + "api/usuario/find",
+  updateUser: urlApi + "api/usuario/update",
 
   //recetas
   createRecepie: urlApi + "api/receta/create",
   getAllRecepies: urlApi + "api/receta/list",
   getRecepieById: urlApi + "api/receta/receta_id",
+  getRecepieByUserId: urlApi + "api/receta/find",
 
 
   //calificacion

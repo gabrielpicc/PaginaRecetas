@@ -5,6 +5,7 @@ import EditableRows from "./EditableRows";
 import { Container } from "./MyRecepiesPage.elements";
 import ReadOnlyRows from "./ReadOnlyRows";
 import recetas from "./recetas.json";
+import { getRecepieByUserId } from "../../controller/miApp.controller"
 
 export function MyRecepiesPage() {
   const [recepies, setRecepies] = useState(recetas);
@@ -84,7 +85,12 @@ export function MyRecepiesPage() {
     localStorage.getItem("user");
   };
 
-  return JSON.parse(localStorage.getItem("isLogued")) ? (
+
+  const recuperaRecetaPorUsuario = async function () {
+    let getRecepieUser = await getRecepieByUserId;
+  }
+
+  return JSON.parse(localStorage.getItem("email") !== null) ? (
     <Container>
       <form onSubmit={handleEditFormSubmit}>
         <table>

@@ -76,7 +76,7 @@ export const Menu = styled.ul`
     top: 70px;
     left: ${({ open }) => (open ? "0" : "-100%")};
     width: 100%;
-    height: 90vh;
+    height: 100%;
     justify-content: center;
     flex-direction: column;
     align-items: center;

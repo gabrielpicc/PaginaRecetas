@@ -22,9 +22,9 @@ export const login = async function (login) {
 
     //console.log(formData);
     let rdo = response.status;
-   // console.log("response", response);
+    // console.log("response", response);
     let data = await response.json();
-   // console.log("jsonresponse", data);
+    // console.log("jsonresponse", data);
     console.log(data.user.id);
     switch (rdo) {
       case 200: {
@@ -32,7 +32,11 @@ export const login = async function (login) {
         localStorage.setItem("x", data.token);
         //guardo usuario logueado
         let user = data.user;
+        console.log(user);
         localStorage.setItem("email", user.email);
+        localStorage.setItem("nombre", user.nombre);
+        localStorage.setItem("apellido", user.apellido);
+        localStorage.setItem("telefono", user.telefono);
         localStorage.setItem("id", user.id);
 
         return { rdo: 0, mensaje: "Ok" }; //correcto
@@ -57,25 +61,30 @@ export const register = async function (register) {
   formData.append("telefono", register.telefono);
   formData.append("email", register.email);
   formData.append("contraseña", register.password);
-  console.log(url)
+  console.log(url);
 
   try {
     let response = await fetch(url, {
       method: "POST", // or 'PUT'
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
+        Accept: "application/x-www-form-urlencoded",
         // 'x-access-token': WebToken.webToken,
-        "Origin": "http://localhost:3000",
+        Origin: "http://localhost:3000",
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
       body: formData,
     });
 
+    localStorage.setItem("email", register.email);
+    localStorage.setItem("nombre", register.nombre);
+    localStorage.setItem("apellido", register.apellido);
+    localStorage.setItem("telefono", register.telefono);
     let rdo = response.status;
     console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
+    localStorage.setItem("id", data.user.id);
+    console.log("jsonresponse", data.user.id);
     switch (rdo) {
       case 200: {
         localStorage.setItem("x", data.token);
@@ -149,6 +158,59 @@ export const getuser = async function (login) {
   }
 };
 
+export const updateUser = async function (profile) {
+  //url webservices
+  console.log(profile);
+  let url = urlWebServices.updateUser + "/" + profile.id;
+  const formData = new URLSearchParams();
+  formData.append("nombre", profile.nombre);
+  formData.append("apellido", profile.apellido);
+  formData.append("telefono", profile.telefono);
+  formData.append("email", profile.email);
+  console.log(formData);
+  try {
+    let response = await fetch(url, {
+      method: "PUT", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+      },
+      body: formData,
+    });
+
+    localStorage.setItem("email", profile.email);
+    localStorage.setItem("nombre", profile.nombre);
+    localStorage.setItem("apellido", profile.apellido);
+    localStorage.setItem("telefono", profile.telefono);
+    console.log(response);
+    let rdo = response.status;
+    //console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      case 202: {
+        //error mail
+        return {
+          rdo: 1,
+          mensaje: "El mail ingresado no existe en nuestra base.",
+        };
+      }
+      case 203: {
+        //error password
+        return { rdo: 1, mensaje: "La contraseña no es correcta." };
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
 
 //RECETAS
 
@@ -164,7 +226,7 @@ export const createRecepie = async function (register) {
   formData.append("categorias", register.categorias);
   formData.append("procedimiento", register.procedimiento);
   formData.append("usuario_id", register.usuario_id);
-  console.log(register)
+  console.log(register);
   // console.log(url)
 
   try {
@@ -172,9 +234,9 @@ export const createRecepie = async function (register) {
       method: "POST", // or 'PUT'
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
-        "Authorization": `Bearer ${localStorage.getItem("x")}`,
-        "Origin": "http://localhost:3000",
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000",
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
       body: formData,
@@ -209,7 +271,6 @@ export const createRecepie = async function (register) {
 //calificacion
 
 export const updateCalificacion = async function (calificacion) {
-
   //url webservices
   let url = urlWebServices.updateCalificacion;
   //armo json con datos
@@ -223,18 +284,15 @@ export const updateCalificacion = async function (calificacion) {
       method: "PUT",
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
-        "Authorization": `Bearer ${localStorage.getItem("x")}`,
-        "Origin": "http://localhost:3000/",
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
       body: formData,
     });
 
     let rdo = response.status;
-    //console.log("response", response);
-    let data = await response.json();
-    //console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         return { rdo: 0, mensaje: "Ok" }; //correcto
@@ -251,26 +309,27 @@ export const updateCalificacion = async function (calificacion) {
 
 export const getCalificacion = async function (calificacion) {
   //url webservices
-  let url = urlWebServices.getCalificacion + '?receta_id=' + calificacion.receta_id;
+  let url =
+    urlWebServices.getCalificacion + "?receta_id=" + calificacion.receta_id;
   //armo json con datos
   const formData = new URLSearchParams();
   formData.append("receta_id", calificacion.receta_id);
-  console.log(url + '?receta_id' + calificacion.receta_id)
+  console.log(url + "?receta_id" + calificacion.receta_id);
 
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
-        "Authorization": `Bearer ${localStorage.getItem("x")}`,
-        "Origin": "http://localhost:3000/",
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
       },
     });
     //console.log("response", response);
     let data = await response.json();
     console.log("jsonresponse", data);
-    return data
+    return data;
   } catch (error) {
     console.log("error", error);
   }
@@ -284,36 +343,85 @@ export const getAllRecepies = async function () {
       method: "GET", // or 'PUT'
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
-        "Origin": "http://localhost:3000/",
+        Accept: "application/x-www-form-urlencoded",
+        Origin: "http://localhost:3000",
       },
     });
     //console.log("response", response);
     let data = response.json();
     //console.log("jsonresponse", data);
-    return data
+    return data;
   } catch (error) {
     console.log("error", error);
   }
 };
 
-export const getRecepieById = async function (datos) {
+export const getRecepieById = async function (id) {
   //url webservices
-  let url = urlWebServices.getRecepieById + '/' + datos.receta_id;
-  console.log(url)
+  let url = urlWebServices.getRecepieById + "/" + id;
+  console.log(url);
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
       mode: "cors",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
-        "Origin": "http://localhost:3000/",
+        Accept: "application/x-www-form-urlencoded",
+        Origin: "http://localhost:3000/",
       },
     });
+    let rdo = response.status;
     //console.log("response", response);
-    let data = response.json();
+    let data = await response.json();
     //console.log("jsonresponse", data);
-    return data
+    // localStorage.setItem("titulo_by_id", data.titulo)
+    // localStorage.setItem("calificacion_by_id", data.calificacion)
+    // localStorage.setItem("categoria_by_id", data.categoria)
+    // localStorage.setItem("dificultad_by_id", data.dificultad)
+    // localStorage.setItem("ingredientes_by_id", data.ingredientes)
+    // localStorage.setItem("procedimiento_by_id", data.procedimiento)
+    //return {datos: data}
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, datos: data, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getRecepieByUserId = async function (datos) {
+  //url webservices
+  let url = urlWebServices.getRecepieByUserId + "/" + datos.user_id;
+  console.log(url);
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
+      },
+    });
+    let rdo = response.status;
+    //console.log("response", response);
+    let data = await response.json();
+    //console.log("jsonresponse", data);
+    //return {datos: data}
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, datos: data, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
   } catch (error) {
     console.log("error", error);
   }

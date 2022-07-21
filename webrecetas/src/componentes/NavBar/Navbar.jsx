@@ -32,13 +32,17 @@ const Navbar = () => {
 
   const handleClickEvent = () => {
     setShowMobileMenu(!showMobileMenu);
-    localStorage.clear();
+    localStorage.clear("telefono")
+    localStorage.clear("nombre")
+    localStorage.clear("id")
+    localStorage.clear("email")
+    localStorage.clear("apellido")
   };
 
   const [searchTerm, setSearchTerm] = useState("");
 
   return JSON.parse(localStorage.getItem("email") !== null) ? (
-    <Container>
+    <Container open={showMobileMenu}>
       <Wrapper>
         <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
           <LogoLink to="/">
@@ -80,8 +84,15 @@ const Navbar = () => {
               </LogoContainer>
             </StyledLink>
           </div>
-          <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            {showMobileMenu ? <FaTimes /> : <FaBars />}
+          <MobileIcon onClick={() => {
+            setShowMobileMenu(!showMobileMenu)
+            if(!showMobileMenu){
+              document.getElementsByTagName("html")[0].style.overflow = "hidden"
+            } else {
+              document.getElementsByTagName("html")[0].style.overflow = "auto"
+            }
+          } }>
+            {showMobileMenu ? <FaTimes className="FaItem"/> : <FaBars className="FaItem" />}
           </MobileIcon>
           <Menu open={showMobileMenu}>
             <MenuItem>

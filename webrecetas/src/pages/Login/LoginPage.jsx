@@ -25,7 +25,6 @@ export function LoginPage() {
     console.log(getLogin.rdo);
     if (getLogin.rdo === 0) {
       setUsuarioValido(true);
-
     }
     if (getLogin.rdo === 1) {
       alert(getLogin.mensaje);

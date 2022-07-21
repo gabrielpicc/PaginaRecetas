@@ -33,7 +33,6 @@ export const UserFields = styled.div`
   text-align: center;
   padding-top: 50px;
 
-
   label {
     text-transform: capitalize;
     font-size: 2rem;
@@ -42,7 +41,7 @@ export const UserFields = styled.div`
     margin: 50px;
   }
 
-  .x{
+  .x {
     font-size: 4rem;
     color: #f0a500;
   }
@@ -52,6 +51,14 @@ export const UserFields = styled.div`
     background-color: #000000;
     border: 2px solid #f0a500;
     border-radius: 4px;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
 
     ::-webkit-input-placeholder {
       text-align: center;

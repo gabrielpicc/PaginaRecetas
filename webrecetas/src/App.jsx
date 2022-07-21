@@ -18,11 +18,8 @@ export function App() {
   return (
     <Router>
       <main>
-        <Navbar />
+        <Navbar className="NavMenu"/>
         <Routes>
-          {/* {JSON.parse(localStorage.getItem("isLogued")) === false && (
-            <Route path="/login" element={<LoginPage />}></Route>
-          )} */}
           <Route path="/login" element={<LoginPage />}></Route>
 
           <Route path="/" element={<LandingPage />}></Route>
