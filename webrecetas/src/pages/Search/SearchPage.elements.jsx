@@ -164,6 +164,7 @@ export const Box = styled.div`
     position: relative;
     background-color: #000;
     z-index: 1;
+    margin: 20px;
   }
 
   button:hover {
@@ -189,5 +190,19 @@ export const Box = styled.div`
     right: 0;
     opacity: 1;
     z-index: -1;
+  }
+`;
+
+export const SearchBar = styled.div`
+  display: flex;
+  width: auto;
+  align-items: center;
+  background-color: #f0a500;
+
+  input {
+    margin:2px; //nuevo3
+    width: 120px; //nuevo3
+    height: 50px;
+    font-size: 15px;
   }
 `;

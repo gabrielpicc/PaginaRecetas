@@ -15,21 +15,21 @@ import { NoLogUserCont } from "../NotLoguedPage.elements";
 
 export function LoadRecipePage() {
   const options = [
-    { value: "Carnes", label: "Carnes" },
-    { value: "Pollo", label: "Pollo" },
-    { value: "Pescados", label: "Pescados" },
-    { value: "Ensaladas", label: "Ensaladas" },
-    { value: "Saludable", label: "Saludable" },
-    { value: "Sopas", label: "Sopas" },
-    { value: "Pastas", label: "Pastas" },
-    { value: "Pizzas", label: "Pizzas" },
-    { value: "Empanadas", label: "Empanadas" },
-    { value: "Parrilla", label: "Parrilla" },
-    { value: "Vegano", label: "Vegano" },
-    { value: "Vegetariano", label: "Vegetariano" },
-    { value: "Postres", label: "Postres" },
-    { value: "Legumbres", label: "Legumbres" },
-    { value: "Sushi", label: "Sushi" },
+    { value: "carnes", label: "carnes" },
+    { value: "pollo", label: "pollo" },
+    { value: "pescados", label: "pescados" },
+    { value: "ensaladas", label: "ensaladas" },
+    { value: "saludable", label: "saludable" },
+    { value: "sopas", label: "sopas" },
+    { value: "pastas", label: "pastas" },
+    { value: "pizzas", label: "pizzas" },
+    { value: "empanadas", label: "empanadas" },
+    { value: "parrilla", label: "parrilla" },
+    { value: "vegano", label: "vegano" },
+    { value: "vegetariano", label: "vegetariano" },
+    { value: "postres", label: "postres" },
+    { value: "legumbres", label: "legumbres" },
+    { value: "sushi", label: "sushi" },
   ];
 
   const [ingredientList, setingredientList] = useState([{ ingredient: "" }]);

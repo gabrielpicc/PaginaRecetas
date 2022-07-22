@@ -543,11 +543,125 @@ export const deleteDataIng = async function (receta_id) {
   }
 };
 
+
+export const getrecetabyingredient = async function (recetabyingredient) { 
+  let url = urlWebServices.getrecetabyingredient +"/"+recetabyingredient;
+  console.log(url);
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+    });
+
+    let rdo = response.status;
+    console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    console.log("info", data.ingrediente);
+    switch (rdo) {
+      case 200: {
+        return data; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getRecetabyCategory = async function (category) { 
+  let url = urlWebServices.getRecetabyCategory +"/"+category;
+  console.log(url);
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+    });
+
+    let rdo = response.status;
+    console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    switch (rdo) {
+      case 200: {
+        return data; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "No pudimos encontrar la receta con el parametro" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getrecetabytitulo = async function (recetabytitulo) { //LISTO
+  //url webservices
+  let url = urlWebServices.getrecetabytitulo+"?titulo="+recetabytitulo;
+  //armo json con datos
+  console.log(url)
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+    });
+
+    let rdo = response.status;
+    console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    switch (rdo) {
+      case 200: {
+        return data; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getrecetabydificultad = async function (rectabydificultad) {
+  //url webservices
+  let url = urlWebServices.getrecetabydificultad+"?dificultad="+rectabydificultad;
+  //armo json con datos
+  console.log(url)
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+    });
+
+    let rdo = response.status;
+    console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    switch (rdo) {
+      case 200: {
+        return data; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
 //recuperacion contraseña
 
 export const getDatosPregunta = async function (email) {
   //url webservices
-  let url = urlWebServices.getDatosPregunta+ "?email=" + email
+  let url = urlWebServices.getDatosPregunta+ "?email=" + email;
   //armo json con datos
   console.log(url);
   try {

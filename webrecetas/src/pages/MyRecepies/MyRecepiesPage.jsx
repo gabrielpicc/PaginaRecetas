@@ -140,7 +140,7 @@ export function MyRecepiesPage() {
     return JSON.parse(localStorage.getItem("email") !== null) ? (
       <Container>
         <form onSubmit={handleEditFormSubmit}>
-          <Label style={{fontSize: "1.5rem"}}>Al editar categoria e ingrediente: Ingresar los valores separados por "coma" (,)</Label>
+          <Label style={{fontSize: "1.35rem"}}>Al editar categoria e ingrediente: Ingresar los valores separados por "coma" (,) y sin espacios</Label>
           <table>
             <tbody>
               {data.map((receta) => (

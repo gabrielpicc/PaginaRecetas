@@ -16,7 +16,10 @@ const urlWebServices = {
   updateRecepie: urlApi + "api/receta/update_recepie",
   deleteDataCat: urlApi + "api/receta/cats",
   deleteDataIng: urlApi + "api/receta/ings",
-
+  getrecetabydificultad: urlApi + "api/receta/dificultad",
+  getrecetabytitulo: urlApi + "api/receta/titulo",
+  getrecetabyingredient: urlApi + "api/receta/ingredient",
+  getRecetabyCategory: urlApi + "api/receta/categoria",
 
   //calificacion
   updateCalificacion: urlApi + "api/receta/calificacion/update",
@@ -24,7 +27,7 @@ const urlWebServices = {
 
   //recover pass
   getDatosPregunta: urlApi + "api/usuario/obtenerDatos",
-  establecerNuevaContraseña: urlApi + "api/usuario/cambiarPass"
+  establecerNuevaContraseña: urlApi + "api/usuario/cambiarPass",
 };
 
 export default urlWebServices;
