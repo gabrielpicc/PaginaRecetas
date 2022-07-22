@@ -5,7 +5,7 @@ function Loading() {
   return(
     <div>
       <br></br>
-      <Spinner color="success"/>
+      <Spinner style={{color: "#f0a500",fontSize: "2rem", textAlign: "center"}}/>
     </div>
   );
 }

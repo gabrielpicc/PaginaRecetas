@@ -26,7 +26,7 @@ export function LoginPage() {
     if (getLogin.rdo === 0) {
       setUsuarioValido(true);
     }
-    if (getLogin.rdo === 1) {
+    else{
       alert(getLogin.mensaje);
     }
   };
@@ -90,6 +90,11 @@ export function LoginPage() {
             <button onClick={loginUser}>Iniciar Sesion</button>
             <Link to="/registration">
               <button>Registrarse</button>
+            </Link>
+          </Button>
+          <Button>
+            <Link to="/recover_pass">
+              <button>Olvidaste tu contraseña?</button>
             </Link>
           </Button>
         </Wrapper>

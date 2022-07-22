@@ -4,9 +4,9 @@ import { StyledLink } from "../../componentes/NavBar/Navbar.elements";
 
 export const Container = styled.div`
   width: 320px;
-  height: 420px;
+  height: fit-content;
   border-radius: 5%;
-  background: #000;//linear-gradient(to right,  #f0a40018 , #00000039);
+  background: #000;
   color: #fff;
   border: 3px solid #f0a500;
   top: 50%;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 
   &.reg-container {
     width: 350px;
-    height: 500px;
+    height: fit-content;
   }
   /* width: 30%;
   background-color: #000000;
@@ -124,6 +124,7 @@ export const Button = styled.div`
   align-items: center;
   text-align: center;
   min-height: 5vh;
+  margin: 5px;
 
   * {
     background-color: #000000;
@@ -169,4 +170,32 @@ export const Button = styled.div`
     opacity: 1;
     z-index: -1;
   }
+`;
+
+export const Barra = styled.div`
+  div {
+    background-color: #f0a500;
+    font-weight: bold;
+  }
+
+`;
+
+export const Box = styled.div`
+  align-content: center;
+  text-align: left;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+  height: 30;
+  width: 30;
+  
+  input[type="number"]{
+    height: 30;
+    width: 30;
+    background-color: #f0a500;
+    border: 1px solid #ffff;
+    font-weight: bold;
+    text-align: center;
+    }
+
 `;

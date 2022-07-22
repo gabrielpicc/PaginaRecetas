@@ -61,7 +61,6 @@ export function LoadRecipePage() {
 
   const handleNewRecepie = async function () {
     formatIngredientes();
-    console.log(proc)
     let datos = {
       titulo: titulo,
       dificultad: dificultad,
@@ -79,6 +78,7 @@ export function LoadRecipePage() {
     Object.keys(ingredientList).map(function (value) {
       ingredientes.push(ingredientList[value].ingredient);
     });
+    console.log(ingredientes)
     setIngString(ingredientes.join());
   };
 

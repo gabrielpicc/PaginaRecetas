@@ -9,16 +9,14 @@ import { LoadRecipePage } from "./pages/LoadRecipe/LoadRecipePage";
 import VistaReceta from "./pages/Vista/VistaReceta";
 import { ProfilePage } from "./pages/Login/ProfilePage";
 import { SearchPage } from "./pages/Search/SearchPage";
-import { Footer } from "./App.elements";
-import { BsInstagram, BsTwitter } from "react-icons/bs";
-import { SiGmail } from "react-icons/si";
+import RecoverPassPage from "./pages/RecoverPass/RecoverPassPage";
 //import styles from "./App.module.css";
 
 export function App() {
   return (
     <Router>
       <main>
-        <Navbar className="NavMenu"/>
+        <Navbar className="NavMenu" />
         <Routes>
           <Route path="/login" element={<LoginPage />}></Route>
 
@@ -26,13 +24,17 @@ export function App() {
 
           <Route path="/registration" element={<RegistrationPage />}></Route>
 
-          <Route path="/my_recepies" element={<MyRecepiesPage />}></Route>
+          <Route path="/my_recepies/:id" element={<MyRecepiesPage />}></Route>
 
           <Route path="/upload_recepies" element={<LoadRecipePage />}></Route>
 
           <Route path="/profile" element={<ProfilePage />}></Route>
-          <Route path="/vista_receta/:receta_id" element={<VistaReceta />}></Route>
+          <Route
+            path="/vista_receta/:receta_id"
+            element={<VistaReceta />}
+          ></Route>
           <Route path="/search" element={<SearchPage />}></Route>
+          <Route path="/recover_pass" element={<RecoverPassPage />}></Route>
         </Routes>
       </main>
       {/* <Footer>

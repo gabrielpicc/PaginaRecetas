@@ -29,14 +29,13 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isLogged, SetIdLogged] = useState(true);
 
-
   const handleClickEvent = () => {
     setShowMobileMenu(!showMobileMenu);
-    localStorage.clear("telefono")
-    localStorage.clear("nombre")
-    localStorage.clear("id")
-    localStorage.clear("email")
-    localStorage.clear("apellido")
+    localStorage.clear("telefono");
+    localStorage.clear("nombre");
+    localStorage.clear("id");
+    localStorage.clear("email");
+    localStorage.clear("apellido");
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -84,15 +83,23 @@ const Navbar = () => {
               </LogoContainer>
             </StyledLink>
           </div>
-          <MobileIcon onClick={() => {
-            setShowMobileMenu(!showMobileMenu)
-            if(!showMobileMenu){
-              document.getElementsByTagName("html")[0].style.overflow = "hidden"
-            } else {
-              document.getElementsByTagName("html")[0].style.overflow = "auto"
-            }
-          } }>
-            {showMobileMenu ? <FaTimes className="FaItem"/> : <FaBars className="FaItem" />}
+          <MobileIcon
+            onClick={() => {
+              setShowMobileMenu(!showMobileMenu);
+              if (!showMobileMenu) {
+                document.getElementsByTagName("html")[0].style.overflow =
+                  "hidden";
+              } else {
+                document.getElementsByTagName("html")[0].style.overflow =
+                  "auto";
+              }
+            }}
+          >
+            {showMobileMenu ? (
+              <FaTimes className="FaItem" />
+            ) : (
+              <FaBars className="FaItem" />
+            )}
           </MobileIcon>
           <Menu open={showMobileMenu}>
             <MenuItem>
@@ -109,7 +116,9 @@ const Navbar = () => {
             </MenuItem>
 
             <MenuItem>
-              <StyledLink to="/my_recepies">
+              <StyledLink
+                to={{ pathname: `/my_recepies/${localStorage.getItem("id")}` }}
+              >
                 <MenuItemLink
                   onClick={() => setShowMobileMenu(!showMobileMenu)}
                 >

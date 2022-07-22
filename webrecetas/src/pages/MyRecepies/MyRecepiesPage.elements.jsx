@@ -69,14 +69,14 @@ export const Container = styled.div`
     -webkit-text-stroke: 1px #f0a500;
   }
   td:nth-of-type(4):before {
-    content: "Calificacion: ";
+    content: "Ingredientes: ";
     -webkit-text-stroke: 1px #f0a500;
   }
   td:nth-of-type(5):before {
     content: "Status: ";
     -webkit-text-stroke: 1px #f0a500;
   }
-  td:nth-of-type(6):before {
+  td:nth-of-type(7):before {
     content: "Acciones: ";
     -webkit-text-stroke: 1px #f0a500;
   }

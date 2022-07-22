@@ -12,11 +12,19 @@ const urlWebServices = {
   getAllRecepies: urlApi + "api/receta/list",
   getRecepieById: urlApi + "api/receta/receta_id",
   getRecepieByUserId: urlApi + "api/receta/find",
+  deleteRecepie: urlApi + "api/receta/delete",
+  updateRecepie: urlApi + "api/receta/update_recepie",
+  deleteDataCat: urlApi + "api/receta/cats",
+  deleteDataIng: urlApi + "api/receta/ings",
 
 
   //calificacion
   updateCalificacion: urlApi + "api/receta/calificacion/update",
   getCalificacion: urlApi + "api/receta/calificacion",
+
+  //recover pass
+  getDatosPregunta: urlApi + "api/usuario/obtenerDatos",
+  establecerNuevaContraseña: urlApi + "api/usuario/cambiarPass"
 };
 
 export default urlWebServices;

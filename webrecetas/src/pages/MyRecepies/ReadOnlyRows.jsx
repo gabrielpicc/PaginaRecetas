@@ -1,12 +1,18 @@
 import React from "react";
 
-export function ReadOnlyRows({ receta, handleEditClick, handleDeleteClick }) {
+export function ReadOnlyRows({
+  receta,
+  handleEditClick,
+  handleDeleteClick,
+  ingredientes,
+  categorias,
+}) {
   return (
     <tr>
       <td>{receta.titulo}</td>
       <td>{receta.dificultad}</td>
-      <td>{receta.categorias + ""}</td>
-      <td>{receta.calificacion}</td>
+      <td>{categorias + ""}</td>
+      <td>{ingredientes + ""}</td>
       <td>{receta.status}</td>
       <div>
         <button
@@ -15,7 +21,7 @@ export function ReadOnlyRows({ receta, handleEditClick, handleDeleteClick }) {
         >
           Editar
         </button>
-        <button type="button" onClick={() => handleDeleteClick(receta.id)}>
+        <button onClick={(event) => handleDeleteClick(event, receta)}>
           Delete
         </button>
       </div>

@@ -5,11 +5,45 @@ import EditableRows from "./EditableRows";
 import { Container } from "./MyRecepiesPage.elements";
 import ReadOnlyRows from "./ReadOnlyRows";
 import recetas from "./recetas.json";
-import { getRecepieByUserId } from "../../controller/miApp.controller"
+import {
+  getRecepieByUserId,
+  getCalificacion,
+  deleteRecepie,
+} from "../../controller/miApp.controller";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Loading from "../../componentes/NavBar/Loading";
+import { Label } from "reactstrap";
 
 export function MyRecepiesPage() {
   const [recepies, setRecepies] = useState(recetas);
   const [editRecepieId, setEditRecepiId] = useState(null);
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [numCalif, setNumCalif] = useState();
+
+
+  useEffect(() => {
+    let isSuscribed = true;
+
+    const recuperaRecetaPorUsuario = async () => {
+      let data = await getRecepieByUserId(localStorage.getItem("id"));
+      let json_data = await data.datos;
+      if (isSuscribed) {
+        setData(json_data);
+      }
+    };
+
+    const changeLoadingState = () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    };
+    recuperaRecetaPorUsuario().catch(console.error);
+    changeLoadingState();
+    return () => (isSuscribed = false);
+  }, [id]);
 
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
@@ -19,6 +53,7 @@ export function MyRecepiesPage() {
       titulo: editFormData.titulo,
       dificultad: editFormData.dificultad,
       categorias: editFormData.categorias,
+      ingredientes: editFormData.ingredientes,
       calificacion: editFormData.calificacion,
       status: editFormData.status,
     };
@@ -34,27 +69,55 @@ export function MyRecepiesPage() {
   };
 
   const [editFormData, setEditFormData] = useState({
+    id: "",
     titulo: "",
     dificultad: "",
     categorias: "",
-    calificacion: "",
+    ingredientes: "",
     status: "",
   });
 
   const handleEditClick = (event, receta) => {
     event.preventDefault();
     setEditRecepiId(receta.id);
-
     const formValues = {
+      id: receta.id,
       titulo: receta.titulo,
       dificultad: receta.dificultad,
-      categorias: receta.categorias,
-      calificacion: receta.calificacion,
+      categorias: transformData(receta.categoria, true),
+      ingredientes: transformData(receta.ingredientes, false),
       status: receta.status,
     };
-
     setEditFormData(formValues);
   };
+
+  const changeLoadingState = () => {
+    setTimeout(() => {
+      setLoading(false);
+      window.location.reload()
+    }, 1000);
+  };
+
+  const handleDeleteClick = async function(event, receta) {
+    await deleteRecepie(receta.id)
+    setLoading(true);
+    changeLoadingState();
+  }
+
+  const transformData = (datos, bool) => {
+    let stringData = [];
+    if (bool) {
+      datos.forEach((dato) => {
+        stringData.push(dato.descripcion);
+      });
+    } else {
+      datos.forEach((dato) => {
+        stringData.push(dato.ingrediente_descr);
+      });
+    }
+    return stringData.join();
+  };
+
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -71,33 +134,16 @@ export function MyRecepiesPage() {
     setEditRecepiId(null);
   };
 
-  const handleDeleteClick = (recepiId) => {
-    const newRecepies = [...recepies];
-
-    const index = recepies.findIndex((receta) => receta.id === recepiId);
-
-    newRecepies.splice(index, 1);
-
-    setRecepies(newRecepies);
-  };
-
-  const getData = () => {
-    localStorage.getItem("user");
-  };
-
-
-  const recuperaRecetaPorUsuario = async function () {
-    let getRecepieUser = await getRecepieByUserId;
-  }
-
-  return JSON.parse(localStorage.getItem("email") !== null) ? (
-    <Container>
-      <form onSubmit={handleEditFormSubmit}>
-        <table>
-          <tbody>
-            {recepies
-              .filter((receta) => receta.owner === localStorage.getItem("user"))
-              .map((receta) => (
+  if (loading) {
+    return <Loading />;
+  } else {
+    return JSON.parse(localStorage.getItem("email") !== null) ? (
+      <Container>
+        <form onSubmit={handleEditFormSubmit}>
+          <Label style={{fontSize: "1.5rem"}}>Al editar categoria e ingrediente: Ingresar los valores separados por "coma" (,)</Label>
+          <table>
+            <tbody>
+              {data.map((receta) => (
                 <Fragment>
                   {editRecepieId === receta.id ? (
                     <EditableRows
@@ -110,17 +156,20 @@ export function MyRecepiesPage() {
                       receta={receta}
                       handleEditClick={handleEditClick}
                       handleDeleteClick={handleDeleteClick}
+                      ingredientes={transformData(receta.ingredientes, false)}
+                      categorias={transformData(receta.categoria, true)}
                     />
                   )}
                 </Fragment>
               ))}
-          </tbody>
-        </table>
-      </form>
-    </Container>
-  ) : (
-    <NoLogUserCont>
-      <div>Debes iniciar sesion para poder ver tus recetas</div>
-    </NoLogUserCont>
-  );
+            </tbody>
+          </table>
+        </form>
+      </Container>
+    ) : (
+      <NoLogUserCont>
+        <div>Debes iniciar sesion para poder ver tus recetas</div>
+      </NoLogUserCont>
+    );
+  }
 }

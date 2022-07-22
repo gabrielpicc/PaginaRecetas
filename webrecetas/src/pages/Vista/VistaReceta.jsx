@@ -20,7 +20,6 @@ import Loading from "../../componentes/NavBar/Loading";
 
 export function VistaReceta() {
   const [numCalif, setNumCalif] = useState();
-  const [calif, setCalif] = useState();
   const [loading, setLoading] = useState(true);
   const { receta_id } = useParams();
 
@@ -106,10 +105,6 @@ export function VistaReceta() {
     return (
       <div>
         {console.log("jhwegrwujherg", data)}
-        {/* {console.log(dificultad)}
-        {console.log(procedimiento)}
-        {console.log(categoria)}
-        {console.log(ingredientes)} */}
         <Container>
           <Img
             alt="Imagen de la Receta"

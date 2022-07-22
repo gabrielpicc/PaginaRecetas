@@ -11,9 +11,9 @@ export const login = async function (login) {
     let response = await fetch(url, {
       method: "Post",
       headers: {
-        "Accept": "application/x-www-form-urlencoded",
+        Accept: "application/x-www-form-urlencoded",
         // 'x-access-token': WebToken.webToken,
-        "Origin": "http://localhost:3000/",
+        Origin: "http://localhost:3000/",
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
       mode: "cors",
@@ -25,7 +25,7 @@ export const login = async function (login) {
     // console.log("response", response);
     let data = await response.json();
     // console.log("jsonresponse", data);
-    console.log(data.user.id);
+
     switch (rdo) {
       case 200: {
         //guardo token
@@ -40,6 +40,9 @@ export const login = async function (login) {
         localStorage.setItem("id", user.id);
 
         return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      case 401: {
+        return { rdo: 1, mensaje: "Contraseña incorrecta" };
       }
       default: {
         //otro error
@@ -61,6 +64,8 @@ export const register = async function (register) {
   formData.append("telefono", register.telefono);
   formData.append("email", register.email);
   formData.append("contraseña", register.password);
+  formData.append("pregunta", register.pregunta); //nuevo
+  formData.append("respuesta", register.respuesta);
   console.log(url);
 
   try {
@@ -217,6 +222,7 @@ export const updateUser = async function (profile) {
 export const createRecepie = async function (register) {
   //url webservices
   let url = urlWebServices.createRecepie;
+  console.log("el registro", register);
   //armo json con datos
   const formData = new URLSearchParams();
   formData.append("titulo", register.titulo);
@@ -244,19 +250,9 @@ export const createRecepie = async function (register) {
 
     let rdo = response.status;
     console.log("response", response);
-    let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
-        localStorage.setItem("x", data.token);
-        //guardo usuario logueado
-        let user = data.user;
-        localStorage.setItem("email", user.email);
         return { rdo: 0, mensaje: "Ok" }; //correcto
-      }
-      case 422: {
-        //error general
-        return { rdo: 1, mensaje: "El mail ingresado ya está en uso" };
       }
       default: {
         //otro error
@@ -396,7 +392,7 @@ export const getRecepieById = async function (id) {
 
 export const getRecepieByUserId = async function (datos) {
   //url webservices
-  let url = urlWebServices.getRecepieByUserId + "/" + datos.user_id;
+  let url = urlWebServices.getRecepieByUserId + "/" + datos;
   console.log(url);
   try {
     let response = await fetch(url, {
@@ -416,6 +412,201 @@ export const getRecepieByUserId = async function (datos) {
     switch (rdo) {
       case 200: {
         return { rdo: 0, datos: data, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const deleteRecepie = async function (receta) {
+  let url = urlWebServices.deleteRecepie + "/" + receta;
+  try {
+    let response = await fetch(url, {
+      method: "DELETE", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
+      },
+    });
+    console.log(response);
+    let rdo = response.status;
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const updateRecepie = async function (datos) {
+  let url = urlWebServices.updateRecepie;
+  const formData = new URLSearchParams();
+  formData.append("receta_id", datos.receta_id);
+  formData.append("titulo", datos.titulo);
+  formData.append("dificultad", datos.dificultad);
+  formData.append("categorias", datos.categorias);
+  formData.append("ingredientes", datos.ingredientes);
+  formData.append("status", datos.status);
+  try {
+    let response = await fetch(url, {
+      method: "PUT", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
+      },
+      body: formData,
+    });
+    console.log(response);
+    let rdo = response.status;
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const deleteDataCat = async function (receta_id) {
+  let url = urlWebServices.deleteDataCat + "/" + receta_id;
+  try {
+    let response = await fetch(url, {
+      method: "delete", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
+      },
+    });
+    console.log(response);
+    let rdo = response.status;
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const deleteDataIng = async function (receta_id) {
+  let url = urlWebServices.deleteDataIng + "/" + receta_id;
+  try {
+    let response = await fetch(url, {
+      method: "delete", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${localStorage.getItem("x")}`,
+        Origin: "http://localhost:3000/",
+      },
+    });
+    console.log(response);
+    let rdo = response.status;
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+//recuperacion contraseña
+
+export const getDatosPregunta = async function (email) {
+  //url webservices
+  let url = urlWebServices.getDatosPregunta+ "?email=" + email
+  //armo json con datos
+  console.log(url);
+  try {
+    let response = await fetch(url, {
+      method: "GET", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        // 'x-access-token': WebToken.webToken,
+        Origin: "http://localhost:3000/",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+    });
+
+    let rdo = response.status;
+    let data = await response.json();
+    switch (rdo) {
+      case 200: {
+        return data; //correcto
+      }
+      default: {
+        //otro error
+        return { rdo: 1, mensaje: "Ha ocurrido un error" };
+      }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const establecerNuevaContraseña = async function (datos) {
+  //url webservices
+  let url = urlWebServices.establecerNuevaContraseña;
+  //armo json con datos
+  const formData = new URLSearchParams();
+  formData.append("contraseña", datos.contraseña);
+  formData.append("email", datos.email);
+  console.log("esta es la urls", url);
+
+  try {
+    let response = await fetch(url, {
+      method: "put", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        // 'x-access-token': WebToken.webToken,
+        Origin: "http://localhost:3000/",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: formData,
+    });
+
+    let rdo = response.status;
+    console.log("response", response);
+    let data = await response.json();
+    console.log("jsonresponse", data);
+    switch (rdo) {
+      case 200: {
+        return { rdo: 0, mensaje: "Ok" }; //correcto
       }
       default: {
         //otro error

@@ -16,31 +16,12 @@ export function LandingPage() {
       setRecetasBase(data)
     }
     onLoadShowRecepies()
-    // localStorage.clear("receta_por_id_titulo");
-    // localStorage.clear("receta_por_id_dificultad");
-    // localStorage.clear("receta_por_id_procedimiento");
-    // localStorage.clear("receta_por_id_categoria");
-    // localStorage.clear("receta_por_id_ingredientes");
   }, [])
 
-  const [recepies, setRecepies] = useState(recetas);
   const [recetasBase, setRecetasBase] = useState([]);
-
-  // const getRecetaById = async function (receta_id) {
-  //   let datos = { receta_id: receta_id };
-  //   let data = await getRecepieById(datos);
-  //   console.log(data.datos)
-  //   localStorage.clear("receta_por_id_titulo")
-  //   localStorage.setItem("receta_por_id_titulo", data.datos.titulo);
-  //   localStorage.setItem("receta_por_id_dificultad", data.datos.dificultad);
-  //   localStorage.setItem("receta_por_id_procedimiento", data.datos.procedimiento);
-  //   localStorage.setItem("receta_por_id_categoria", data.datos.categoria);
-  //   localStorage.setItem("receta_por_id_ingredientes", data.datos.ingredientes);
-  // };
 
   return (
     <Container>
-      {console.log(recetasBase)}
       <div className="description">
         <label className="label1">¡Bienvenido a Star</label>
         <label className="label2">Woks!</label>

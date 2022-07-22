@@ -7,11 +7,16 @@ import {
   Button,
   Title,
   Wrapper,
+  Label,
+  Box,
+  Barra,
 } from "./LoginPage.elements";
 import { GiDeathStar } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 export function RegistrationPage() {
+  const [pregunta, setPregunta] = useState("¿Cuál es el apellido de soltera de tu madre?");
+  const [respuesta, setRespuesta] = useState("");
   const [email, setEmail] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -23,7 +28,8 @@ export function RegistrationPage() {
     if (
       (nombre !== "" && pass !== "",
       apellido !== "",
-      email !== "" && telefono !== "")
+      email !== "" && telefono !== "",
+      pregunta !== "" && respuesta !== "")
     ) {
       validateRegistration();
     } else {
@@ -38,6 +44,8 @@ export function RegistrationPage() {
       nombre: nombre,
       telefono: telefono,
       apellido: apellido,
+      pregunta: pregunta,
+      respuesta: respuesta,
     };
     let getRegistration = await register(datos);
     console.log(getRegistration.rdo);
@@ -103,6 +111,43 @@ export function RegistrationPage() {
               type="password"
               placeholder="Contraseña"
               onChange={(e) => setPass(e.target.value)}
+              className="reg"
+            />
+          </TextField>
+          <Label>Responde la siguiente pregunta:</Label>
+          <Box>
+            <Barra>
+              <div>
+                <select
+                  style={{
+                    color: "white",
+                    backgroundColor: "black",
+                    border: "2px solid #f0a500",
+                  }}
+                  onChange={(e) => setPregunta(e.target.value)}
+                  required
+
+                >
+                  <option selected value="¿Cuál es el apellido de soltera de tu madre?">
+                    ¿Cuál es el apellido de soltera de tu madre?
+                  </option>
+                  <option
+                    value="¿Cuál es el nombre de la primera mascota que tuviste?"
+                  >
+                    ¿Cuál es el nombre de la primera mascota que tuviste?
+                  </option>
+                  <option value="¿A qué colegio asististe?">
+                    ¿A qué colegio asististe?
+                  </option>
+                </select>
+              </div>
+            </Barra>
+          </Box>
+          <TextField>
+            <input
+              required
+              placeholder="Responda aquí"
+              onChange={(e) => setRespuesta(e.target.value)}
               className="reg"
             />
           </TextField>
