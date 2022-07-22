@@ -21,41 +21,6 @@ export const Container = styled.div`
     width: 350px;
     height: fit-content;
   }
-  /* width: 30%;
-  background-color: #000000;
-  margin-top: 100px;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    align-items: center;
-
-    div {
-      width: 30%;
-      justify-content: space-between;
-    }
-  }
-
-  @media screen and (max-width: 880px) {
-    div {
-      width: 40%;
-      justify-content: space-between;
-    }
-  }
-  @media screen and (max-width: 500px) {
-    div {
-      width: 60%;
-      justify-content: space-between;
-    }
-  }
-  @media screen and (max-width: 260px) {
-    div {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }*/
 `;
 
 export const Wrapper = styled.div`

@@ -48,7 +48,6 @@ export function RegistrationPage() {
       respuesta: respuesta,
     };
     let getRegistration = await register(datos);
-    console.log(getRegistration.rdo);
     if (getRegistration.rdo === 0) {
       setUsuarioValido(true);
     }

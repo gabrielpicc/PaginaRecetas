@@ -15,8 +15,6 @@ export function EditableRows({
   const [status, setStatus] = useState(editFormData.status);
   
   const handleSaveClick = async function () {
-    console.log(cats)
-    console.log(ings)
     let datos = {
       receta_id: editFormData.id,
       titulo: title,
@@ -27,7 +25,6 @@ export function EditableRows({
     }
     await deleteDataCat(editFormData.id)
     await deleteDataIng(editFormData.id)
-    console.log(datos)
     let upRecepie = await updateRecepie(datos)
     if (upRecepie.rdo === 0) {
       window.location.reload()
@@ -37,7 +34,6 @@ export function EditableRows({
   return (
     <tr>
       <td>
-        {console.log("formdata",editFormData)}
         <input
           required="required"
           placeholder="Ingrese un titulo"

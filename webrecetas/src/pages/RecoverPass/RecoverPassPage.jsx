@@ -25,11 +25,6 @@ export function RecoverPassPage() {
   const [contraseña, setContraseña] = useState("");
   const [disable_2, setDisable_2] = useState(false);
   const [nuevaContra, setNuevaContra] = useState("");
-  /* const redirect = () => {
-      if (usuarioValido) {
-        return <Navigate to="/" />;
-      }
-    }; */
 
   const obtenerPregunta = async function () {
     if (email === "") {
@@ -68,7 +63,10 @@ export function RecoverPassPage() {
         contraseña: nuevaContra,
         email: email,
       };
-      establecerNuevaContraseña(data);
+      let recoPass = await establecerNuevaContraseña(data);
+      if (recoPass.rdo === 0) {
+        alert(recoPass.mensaje)
+      }
     } else {
       alert("Escriba una nueva contraseña");
     }
@@ -76,7 +74,6 @@ export function RecoverPassPage() {
 
   return (
     <div>
-      {/* {redirect()} */}
       <Container>
         <Title>
           <h3>

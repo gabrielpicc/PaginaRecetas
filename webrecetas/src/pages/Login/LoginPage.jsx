@@ -22,7 +22,6 @@ export function LoginPage() {
       password: password,
     };
     let getLogin = await login(datos);
-    console.log(getLogin.rdo);
     if (getLogin.rdo === 0) {
       setUsuarioValido(true);
     }
@@ -42,7 +41,6 @@ export function LoginPage() {
 
   const getuserr = async function () {
     let getLoefwfgin = await getuser();
-    console.log(getLoefwfgin);
   };
 
   const redirect = () => {

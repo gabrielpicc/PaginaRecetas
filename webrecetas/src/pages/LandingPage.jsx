@@ -36,13 +36,6 @@ export function LandingPage() {
               <img src={"https://www.serargentino.com/public/images/2020/08/15964772970-MIILANESA-773x458.jpg"} alt="alt" width={350} height={300}/>
             </Link>
             <div>{receta.titulo}</div>
-            <div>
-              <GiDeathStar />
-              <GiDeathStar />
-              <GiDeathStar />
-              <GiDeathStar />
-              <GiDeathStar />
-            </div>
             <div>Dificultad: {receta.dificultad}</div>
           </div>
         ))}

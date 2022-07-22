@@ -37,21 +37,6 @@ export function App() {
           <Route path="/recover_pass" element={<RecoverPassPage />}></Route>
         </Routes>
       </main>
-      {/* <Footer>
-        <div>Copyright © StarWoks</div>
-        <div>
-          <a href="https://www.instagram.com/">
-            <BsInstagram />
-          </a>
-          <a href="mailto:gpiccini@uade.edu.ar">
-            <SiGmail />
-          </a>
-
-          <a href="https://twitter.com/home">
-            <BsTwitter />
-          </a>
-        </div>
-      </Footer> */}
     </Router>
   );
 }

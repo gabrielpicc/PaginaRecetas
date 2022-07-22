@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createRecepie } from "../../controller/miApp.controller";
+import { createRecepie, uploadFileImg } from "../../controller/miApp.controller";
 import {
   Label,
   TextField,
@@ -58,19 +58,38 @@ export function LoadRecipePage() {
     setingredientList([...ingredientList, { ingredient: "" }]);
   };
 
-
   const handleNewRecepie = async function () {
+    // let file = '';
+    
+    // if (img.name !== "") {
+    //   //buscar extension archivo
+    //   let archivoOrig = img.name;
+    //   let posExt = archivoOrig.indexOf(".");
+    //   let extension = archivoOrig.substring(posExt, archivoOrig.length);
+    //   let aleatorio = Math.random().toString().substring(2, 15);
+
+    //   file = "img"+"_"+aleatorio+extension;
+    //   let archivoImg = await uploadFileImg(img, file)
+    //   if (archivoImg.ok) {
+    //     console.log(archivoImg)
+    //   }
+    // }
+
+
     formatIngredientes();
     let datos = {
       titulo: titulo,
       dificultad: dificultad,
-      status: 'Borrador',
+      status: "Borrador",
       ingredientes: ingString,
       categorias: categorias,
       procedimiento: proc,
-      usuario_id: localStorage.getItem("id")
+      usuario_id: localStorage.getItem("id"),
     };
     let postRecepie = await createRecepie(datos);
+    if (postRecepie.rdo === 0) {
+      alert(postRecepie.mensaje)
+    }
   };
 
   const formatIngredientes = () => {
@@ -78,10 +97,8 @@ export function LoadRecipePage() {
     Object.keys(ingredientList).map(function (value) {
       ingredientes.push(ingredientList[value].ingredient);
     });
-    console.log(ingredientes)
     setIngString(ingredientes.join());
   };
-
 
   const find = (event) => {
     let categories = [];
@@ -95,13 +112,23 @@ export function LoadRecipePage() {
     <Grid>
       <div>
         <TextField>
-          <input placeholder="Nombre de la Receta" type="text" required onChange={(e) => setTitulo(e.target.value)}/>
+          <input
+            placeholder="Nombre de la Receta"
+            type="text"
+            required
+            onChange={(e) => setTitulo(e.target.value)}
+          />
         </TextField>
         <Box>
           <Label>Categoría:</Label>
           <Barra>
             <div>
-              <Select isMulti options={options} required onChange={(e) => find(e)}/>
+              <Select
+                isMulti
+                options={options}
+                required
+                onChange={(e) => find(e)}
+              />
             </div>
           </Barra>
         </Box>
@@ -109,11 +136,20 @@ export function LoadRecipePage() {
         <Box>
           <Label>Dificultad:</Label>
 
-          <input required type="number" min="1" max="5" onChange={(e) => setDificultad(e.target.value)}/>
+          <input
+            required
+            type="number"
+            min="1"
+            max="5"
+            onChange={(e) => setDificultad(e.target.value)}
+          />
         </Box>
         <Label>Seleccione una Imágen:</Label>
-        <input required type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => setImg(e.target.value)}/>
-
+        <input
+          required
+          type="file"
+          onChange={(e) => setImg(e.target.files[0])}
+        />
         <div>
           <Label>Ingredientes:</Label>
           {ingredientList.map((singleIngredient, index) => (
@@ -153,7 +189,11 @@ export function LoadRecipePage() {
         </div>
       </div>
       <Label>Procedimiento:</Label>
-      <Textarea required type="text" onChange={(e) => setProc(e.target.value)}></Textarea>
+      <Textarea
+        required
+        type="text"
+        onChange={(e) => setProc(e.target.value)}
+      ></Textarea>
       <Button>
         <button type="submit" onClick={handleNewRecepie}>
           Enviar

@@ -10,7 +10,6 @@ import {
   Box,
   SearchBar,
 } from "./SearchPage.elements";
-/* import JSONDATA from "./recetas.json"; */
 import {
   getrecetabyingredient,
   getrecetabytitulo,
@@ -29,12 +28,7 @@ export function SearchPage() {
   const [recetas, setRecetas] = useState();
 
   const eventoBuscar = async function () {
-    /* let busqueda = searchTerm.split(" ");
-    console.log("array", busqueda);
-    let recetabying = await getrectabyingredient(busqueda);
-    console.log("resultado", recetabying) */
     let busqueda;
-    console.log("busqueda", searchTerm);
     if (ingSearch === false && catSearch === true && difSearch === true) {
       busqueda = await getrecetabyingredient(searchTerm);
     } else if (
@@ -81,18 +75,6 @@ export function SearchPage() {
                 setSearchTerm(event.target.value);
               }}
             />
-            {/* {JSONDATA.filter((val) => {
-                if (searchTerm === "") {
-                  return val;
-                } else if (
-                  val.titulo.toLowerCase().indexOf(searchTerm.toLowerCase()) >
-                  -1
-                ) {
-                  return val;
-                }
-              }).map((val, key) => {
-                //return console.log("");
-              })} */}
           </SearchBar>
           <Button>
             <button onClick={eventoBuscar}> Search</button>

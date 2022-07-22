@@ -28,6 +28,9 @@ const urlWebServices = {
   //recover pass
   getDatosPregunta: urlApi + "api/usuario/obtenerDatos",
   establecerNuevaContraseña: urlApi + "api/usuario/cambiarPass",
+
+  //imagenes
+  uploadFileImg: urlApi + "api/imagenes/upload",
 };
 
 export default urlWebServices;

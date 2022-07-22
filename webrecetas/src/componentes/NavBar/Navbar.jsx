@@ -21,7 +21,6 @@ import {
   MobileIcon,
   StyledLink,
   LogoLink,
-  SearchBar,
 } from "./Navbar.elements";
 import JSONDATA from "./recetas.json";
 
@@ -51,33 +50,9 @@ const Navbar = () => {
               <p>Woks</p>
             </LogoContainer>
           </LogoLink>
-
-          <div>
-            <SearchBar>
-              <input
-                type="text"
-                placeholder="Busqueda"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-              />
-              {JSONDATA.filter((val) => {
-                if (searchTerm === "") {
-                  return val;
-                } else if (
-                  val.titulo.toLowerCase().indexOf(searchTerm.toLowerCase()) >
-                  -1
-                ) {
-                  return val;
-                }
-              }).map((val, key) => {
-                //return console.log("");
-              })}
-            </SearchBar>
-          </div>
           <div>
             <StyledLink className="busqueda" to="/search">
-              <LogoContainer /* onClick={() => setShowMobileMenu(!showMobileMenu)} */
+              <LogoContainer
               >
                 <GoSearch />
               </LogoContainer>
@@ -175,33 +150,9 @@ const Navbar = () => {
               <p>Woks</p>
             </LogoContainer>
           </LogoLink>
-
-          <div>
-            <SearchBar>
-              <input
-                type="text"
-                placeholder="Busqueda"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-              />
-              {JSONDATA.filter((val) => {
-                if (searchTerm === "") {
-                  return val;
-                } else if (
-                  val.titulo.toLowerCase().indexOf(searchTerm.toLowerCase()) >
-                  -1
-                ) {
-                  return val;
-                }
-              }).map((val, key) => {
-                // return console.log("");
-              })}
-            </SearchBar>
-          </div>
           <div>
             <StyledLink className="busqueda" to="/search">
-              <LogoContainer /* onClick={() => setShowMobileMenu(!showMobileMenu)} */
+              <LogoContainer 
               >
                 <GoSearch />
               </LogoContainer>

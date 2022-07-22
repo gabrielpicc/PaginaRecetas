@@ -6,7 +6,6 @@ export const login = async function (login) {
   const formData = new URLSearchParams();
   formData.append("email", login.email);
   formData.append("contraseña", login.password);
-  //console.log("url",url);
   try {
     let response = await fetch(url, {
       method: "Post",
@@ -20,11 +19,8 @@ export const login = async function (login) {
       body: formData,
     });
 
-    //console.log(formData);
     let rdo = response.status;
-    // console.log("response", response);
     let data = await response.json();
-    // console.log("jsonresponse", data);
 
     switch (rdo) {
       case 200: {
@@ -32,7 +28,6 @@ export const login = async function (login) {
         localStorage.setItem("x", data.token);
         //guardo usuario logueado
         let user = data.user;
-        console.log(user);
         localStorage.setItem("email", user.email);
         localStorage.setItem("nombre", user.nombre);
         localStorage.setItem("apellido", user.apellido);
@@ -66,7 +61,6 @@ export const register = async function (register) {
   formData.append("contraseña", register.password);
   formData.append("pregunta", register.pregunta); //nuevo
   formData.append("respuesta", register.respuesta);
-  console.log(url);
 
   try {
     let response = await fetch(url, {
@@ -86,10 +80,8 @@ export const register = async function (register) {
     localStorage.setItem("apellido", register.apellido);
     localStorage.setItem("telefono", register.telefono);
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
     localStorage.setItem("id", data.user.id);
-    console.log("jsonresponse", data.user.id);
     switch (rdo) {
       case 200: {
         localStorage.setItem("x", data.token);
@@ -115,11 +107,6 @@ export const register = async function (register) {
 export const getuser = async function (login) {
   //url webservices
   let url = urlWebServices.getuser;
-  // var formBody = [
-  //   encodeURIComponent("email") + "=" + encodeURIComponent(login.email),
-  //   encodeURIComponent("contraseña") + "=" + encodeURIComponent(login.password),
-  // ];
-  // console.log("url",url);
   try {
     let response = await fetch(url, {
       method: "get",
@@ -128,9 +115,7 @@ export const getuser = async function (login) {
 
     console.log(response);
     let rdo = response.status;
-    //console.log("response", response);
     let data = await response.json();
-    //console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         //guardo token
@@ -165,7 +150,6 @@ export const getuser = async function (login) {
 
 export const updateUser = async function (profile) {
   //url webservices
-  console.log(profile);
   let url = urlWebServices.updateUser + "/" + profile.id;
   const formData = new URLSearchParams();
   formData.append("nombre", profile.nombre);
@@ -187,11 +171,8 @@ export const updateUser = async function (profile) {
     localStorage.setItem("nombre", profile.nombre);
     localStorage.setItem("apellido", profile.apellido);
     localStorage.setItem("telefono", profile.telefono);
-    console.log(response);
     let rdo = response.status;
-    //console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         return { rdo: 0, mensaje: "Ok" }; //correcto
@@ -222,7 +203,6 @@ export const updateUser = async function (profile) {
 export const createRecepie = async function (register) {
   //url webservices
   let url = urlWebServices.createRecepie;
-  console.log("el registro", register);
   //armo json con datos
   const formData = new URLSearchParams();
   formData.append("titulo", register.titulo);
@@ -232,8 +212,6 @@ export const createRecepie = async function (register) {
   formData.append("categorias", register.categorias);
   formData.append("procedimiento", register.procedimiento);
   formData.append("usuario_id", register.usuario_id);
-  console.log(register);
-  // console.log(url)
 
   try {
     let response = await fetch(url, {
@@ -249,10 +227,9 @@ export const createRecepie = async function (register) {
     });
 
     let rdo = response.status;
-    console.log("response", response);
     switch (rdo) {
       case 200: {
-        return { rdo: 0, mensaje: "Ok" }; //correcto
+        return { rdo: 0, mensaje: "La receta se cargo con exito" }; //correcto
       }
       default: {
         //otro error
@@ -310,7 +287,6 @@ export const getCalificacion = async function (calificacion) {
   //armo json con datos
   const formData = new URLSearchParams();
   formData.append("receta_id", calificacion.receta_id);
-  console.log(url + "?receta_id" + calificacion.receta_id);
 
   try {
     let response = await fetch(url, {
@@ -322,9 +298,7 @@ export const getCalificacion = async function (calificacion) {
         Origin: "http://localhost:3000/",
       },
     });
-    //console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     return data;
   } catch (error) {
     console.log("error", error);
@@ -343,9 +317,7 @@ export const getAllRecepies = async function () {
         Origin: "http://localhost:3000",
       },
     });
-    //console.log("response", response);
     let data = response.json();
-    //console.log("jsonresponse", data);
     return data;
   } catch (error) {
     console.log("error", error);
@@ -355,7 +327,6 @@ export const getAllRecepies = async function () {
 export const getRecepieById = async function (id) {
   //url webservices
   let url = urlWebServices.getRecepieById + "/" + id;
-  console.log(url);
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -366,16 +337,7 @@ export const getRecepieById = async function (id) {
       },
     });
     let rdo = response.status;
-    //console.log("response", response);
     let data = await response.json();
-    //console.log("jsonresponse", data);
-    // localStorage.setItem("titulo_by_id", data.titulo)
-    // localStorage.setItem("calificacion_by_id", data.calificacion)
-    // localStorage.setItem("categoria_by_id", data.categoria)
-    // localStorage.setItem("dificultad_by_id", data.dificultad)
-    // localStorage.setItem("ingredientes_by_id", data.ingredientes)
-    // localStorage.setItem("procedimiento_by_id", data.procedimiento)
-    //return {datos: data}
     switch (rdo) {
       case 200: {
         return { rdo: 0, datos: data, mensaje: "Ok" }; //correcto
@@ -393,7 +355,6 @@ export const getRecepieById = async function (id) {
 export const getRecepieByUserId = async function (datos) {
   //url webservices
   let url = urlWebServices.getRecepieByUserId + "/" + datos;
-  console.log(url);
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -405,10 +366,7 @@ export const getRecepieByUserId = async function (datos) {
       },
     });
     let rdo = response.status;
-    //console.log("response", response);
     let data = await response.json();
-    //console.log("jsonresponse", data);
-    //return {datos: data}
     switch (rdo) {
       case 200: {
         return { rdo: 0, datos: data, mensaje: "Ok" }; //correcto
@@ -435,7 +393,6 @@ export const deleteRecepie = async function (receta) {
         Origin: "http://localhost:3000/",
       },
     });
-    console.log(response);
     let rdo = response.status;
     switch (rdo) {
       case 200: {
@@ -471,7 +428,6 @@ export const updateRecepie = async function (datos) {
       },
       body: formData,
     });
-    console.log(response);
     let rdo = response.status;
     switch (rdo) {
       case 200: {
@@ -499,7 +455,6 @@ export const deleteDataCat = async function (receta_id) {
         Origin: "http://localhost:3000/",
       },
     });
-    console.log(response);
     let rdo = response.status;
     switch (rdo) {
       case 200: {
@@ -527,7 +482,6 @@ export const deleteDataIng = async function (receta_id) {
         Origin: "http://localhost:3000/",
       },
     });
-    console.log(response);
     let rdo = response.status;
     switch (rdo) {
       case 200: {
@@ -543,10 +497,8 @@ export const deleteDataIng = async function (receta_id) {
   }
 };
 
-
-export const getrecetabyingredient = async function (recetabyingredient) { 
-  let url = urlWebServices.getrecetabyingredient +"/"+recetabyingredient;
-  console.log(url);
+export const getrecetabyingredient = async function (recetabyingredient) {
+  let url = urlWebServices.getrecetabyingredient + "/" + recetabyingredient;
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -554,10 +506,7 @@ export const getrecetabyingredient = async function (recetabyingredient) {
     });
 
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
-    console.log("info", data.ingrediente);
     switch (rdo) {
       case 200: {
         return data; //correcto
@@ -572,9 +521,8 @@ export const getrecetabyingredient = async function (recetabyingredient) {
   }
 };
 
-export const getRecetabyCategory = async function (category) { 
-  let url = urlWebServices.getRecetabyCategory +"/"+category;
-  console.log(url);
+export const getRecetabyCategory = async function (category) {
+  let url = urlWebServices.getRecetabyCategory + "/" + category;
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -582,16 +530,17 @@ export const getRecetabyCategory = async function (category) {
     });
 
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         return data; //correcto
       }
       default: {
         //otro error
-        return { rdo: 1, mensaje: "No pudimos encontrar la receta con el parametro" };
+        return {
+          rdo: 1,
+          mensaje: "No pudimos encontrar la receta con el parametro",
+        };
       }
     }
   } catch (error) {
@@ -599,11 +548,11 @@ export const getRecetabyCategory = async function (category) {
   }
 };
 
-export const getrecetabytitulo = async function (recetabytitulo) { //LISTO
+export const getrecetabytitulo = async function (recetabytitulo) {
+  //LISTO
   //url webservices
-  let url = urlWebServices.getrecetabytitulo+"?titulo="+recetabytitulo;
+  let url = urlWebServices.getrecetabytitulo + "?titulo=" + recetabytitulo;
   //armo json con datos
-  console.log(url)
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -611,9 +560,7 @@ export const getrecetabytitulo = async function (recetabytitulo) { //LISTO
     });
 
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         return data; //correcto
@@ -630,9 +577,9 @@ export const getrecetabytitulo = async function (recetabytitulo) { //LISTO
 
 export const getrecetabydificultad = async function (rectabydificultad) {
   //url webservices
-  let url = urlWebServices.getrecetabydificultad+"?dificultad="+rectabydificultad;
+  let url =
+    urlWebServices.getrecetabydificultad + "?dificultad=" + rectabydificultad;
   //armo json con datos
-  console.log(url)
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -640,9 +587,7 @@ export const getrecetabydificultad = async function (rectabydificultad) {
     });
 
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
         return data; //correcto
@@ -661,9 +606,8 @@ export const getrecetabydificultad = async function (rectabydificultad) {
 
 export const getDatosPregunta = async function (email) {
   //url webservices
-  let url = urlWebServices.getDatosPregunta+ "?email=" + email;
+  let url = urlWebServices.getDatosPregunta + "?email=" + email;
   //armo json con datos
-  console.log(url);
   try {
     let response = await fetch(url, {
       method: "GET", // or 'PUT'
@@ -699,7 +643,6 @@ export const establecerNuevaContraseña = async function (datos) {
   const formData = new URLSearchParams();
   formData.append("contraseña", datos.contraseña);
   formData.append("email", datos.email);
-  console.log("esta es la urls", url);
 
   try {
     let response = await fetch(url, {
@@ -715,17 +658,108 @@ export const establecerNuevaContraseña = async function (datos) {
     });
 
     let rdo = response.status;
-    console.log("response", response);
     let data = await response.json();
-    console.log("jsonresponse", data);
     switch (rdo) {
       case 200: {
-        return { rdo: 0, mensaje: "Ok" }; //correcto
+        return { rdo: 0, mensaje: "la contraseña se cambio correctamente" }; //correcto
       }
       default: {
         //otro error
         return { rdo: 1, mensaje: "Ha ocurrido un error" };
       }
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+//imagenes
+
+export const subirImagen = async function (img) {
+  let url = urlWebServices.subirImagen;
+  const formData = new URLSearchParams();
+  formData.append("email", img.email);
+  formData.append("nombreImagen", img.imagen);
+  formData.append("receta_id", img.receta_id);
+
+  try {
+    let response = await fetch(url, {
+      method: "POST", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        //'x-access-token': localStorage.getItem('x'),
+        Origin: "http://localhost:3000",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData,
+    });
+    let rdo = response.status;
+    let data = await response.json();
+    if (response.status === 201) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log("error", error);
+    return false;
+  }
+};
+
+export const uploadFileImg = async function (file, nombre) {
+  //url webservices
+
+  let url = urlWebServices.uploadFileImg;
+  const formData = new FormData();
+  //agrego archivos para subir
+  formData.append("files", file, nombre);
+
+  try {
+    let response = await fetch(url, {
+      method: "POST", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/form-data",
+        //'x-access-token': localStorage.getItem('x'),
+        Origin: "http://localhost:3000",
+        //'Content-Type': 'application/form-data'
+      },
+      body: formData,
+    });
+
+    let archivos = await response.json();
+    return archivos;
+  } catch (err) {
+    alert("Error uploading the files");
+  }
+};
+
+export const getImagenesByUser = async function () {
+  //url webservices
+  let url = urlWebServices.getImgUser;
+  const formData = new URLSearchParams();
+  formData.append("email", localStorage.getItem("email"));
+
+  try {
+    let response = await fetch(url, {
+      method: "POST", // or 'PUT'
+      mode: "cors",
+      headers: {
+        Accept: "application/x-www-form-urlencoded",
+        "x-access-token": localStorage.getItem("x"),
+        Origin: "http://localhost:3000",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData,
+    });
+    if (response.status === 200) {
+      let data = await response.json();
+      let listaImg = data.data.docs;
+      return listaImg;
+    } else {
+      let vacio = [];
+      return vacio;
     }
   } catch (error) {
     console.log("error", error);

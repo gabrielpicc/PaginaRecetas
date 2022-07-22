@@ -44,7 +44,6 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  //font-family: Starjedi;
 
   p {
     &:nth-child(2) {
@@ -209,16 +208,3 @@ export const MobileIcon = styled.div`
   }
 `;
 
-export const SearchBar = styled.div`
-  display: flex;
-  width: auto;
-  align-items: center;
-  background-color: #f0a500;
-
-  input {
-    margin: 10px;
-    width: 90px;
-    height: 50px;
-    font-size: 15px;
-  }
-`;

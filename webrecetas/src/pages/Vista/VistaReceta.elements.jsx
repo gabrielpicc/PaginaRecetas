@@ -63,7 +63,6 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
-  //flex: auto;
   justify-content: center;
   align-items: center;
 

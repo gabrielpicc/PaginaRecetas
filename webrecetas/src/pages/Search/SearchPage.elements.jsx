@@ -43,7 +43,6 @@ export const Title = styled.div`
   text-align: center;
   padding-top: 85px;
   display: flex;
-  //flex: auto;
   justify-content: center;
   align-items: center;
 
@@ -200,8 +199,8 @@ export const SearchBar = styled.div`
   background-color: #f0a500;
 
   input {
-    margin:2px; //nuevo3
-    width: 120px; //nuevo3
+    margin:2px;
+    width: 120px;
     height: 50px;
     font-size: 15px;
   }

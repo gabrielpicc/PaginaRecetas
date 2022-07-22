@@ -46,7 +46,6 @@ export function VistaReceta() {
 
     getRecetaById().catch(console.error);
     changeLoadingState();
-    console.log("hola", data);
 
     return () => (isSuscribed = false);
   }, [receta_id]);
@@ -58,7 +57,6 @@ export function VistaReceta() {
       user: localStorage.getItem("id"),
     };
     let postCalificacion = await updateCalificacion(datos);
-    console.log("datos califfffff", postCalificacion);
   };
 
   const mostrarCalificacion = async function () {
@@ -69,7 +67,6 @@ export function VistaReceta() {
     let getCalif = await getCalificacion(datos);
     var calificacion = pluckCalif(getCalif);
     calificacion = calificacion[1] / calificacion[0];
-    console.log("la calificacion", calificacion);
     setNumCalif(calificacion.toFixed(2));
   };
 
@@ -85,17 +82,13 @@ export function VistaReceta() {
 
   const mapValue = (values, ing) => {
     let list = [];
-    console.log(values);
     values.forEach((value) => {
       if (ing === true) {
-        console.log(value.ingrediente_descr);
         list.push(value.ingrediente_descr);
       } else {
-        console.log(value.descripcion);
         list.push(value.descripcion);
       }
     });
-    console.log(list);
     return list;
   };
 
@@ -104,7 +97,6 @@ export function VistaReceta() {
   } else {
     return (
       <div>
-        {console.log("jhwegrwujherg", data)}
         <Container>
           <Img
             alt="Imagen de la Receta"
@@ -130,7 +122,6 @@ export function VistaReceta() {
                   name="estrellas"
                   value={5}
                   onClick={actualizarCalificacion}
-                  // onChange={mostrarCalificacion}
                 />
                 <label for="radio1">★</label>
                 <input
@@ -139,7 +130,6 @@ export function VistaReceta() {
                   name="estrellas"
                   value={4}
                   onClick={actualizarCalificacion}
-                  // onChange={mostrarCalificacion}
                 />
                 <label for="radio2">★</label>
                 <input
@@ -148,7 +138,6 @@ export function VistaReceta() {
                   name="estrellas"
                   value={3}
                   onClick={actualizarCalificacion}
-                  // onChange={mostrarCalificacion}
                 />
                 <label for="radio3">★</label>
                 <input
@@ -157,7 +146,6 @@ export function VistaReceta() {
                   name="estrellas"
                   value={2}
                   onClick={actualizarCalificacion}
-                  // onChange={mostrarCalificacion}
                 />
                 <label for="radio4">★</label>
                 <input
@@ -166,7 +154,6 @@ export function VistaReceta() {
                   name="estrellas"
                   value={1}
                   onClick={actualizarCalificacion}
-                  // onChange={mostrarCalificacion}
                 />
                 <label for="radio5">★</label>
               </p>
