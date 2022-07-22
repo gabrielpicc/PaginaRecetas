@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# StarWoks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ¿Que es StarWoks?
 
-## Available Scripts
+StarWoks es una WebApp de recetas dirigida a aquellas personas que les gusta cocinar pero no siempre tienen una buena idea sobre que hacer. Se le brindara a los usuarios la posibilidad de crear, editar y eliminar sus propias recetas, ademas de contar con una logica de busqueda de recetas mediante distintos tipos de filtros.
 
-In the project directory, you can run:
+## Casos de uso:
 
-### `npm start`
+### Registro
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Los visitantes de la pagina tendran la opción de registrarse brindando solo algunos datos (nombre, apellido, email, telefono y una contraseña). Un usuario no podra registrarse si ya existe una cuenta con el mail ingresado. Una vez realizado el registro, el usuario sera logueado automaticamente para ya poder usar la pagina al 100%. Ademas tambien existirá una seleccion obligatoria de una pregunta secreta junto a una respuesta para poder restaurar la contraseña.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Login
 
-### `npm test`
+- En caso de que seamos un usuario ya registrado, podremos ingresar a nuestra cuenta unicamente indicando el mail con el que nos registramos y la contraseña. En caso de que el usuario olvide su contraseña, podra hacer click sobre la opcion "olvidaste tu contraseña?" el cual lo redirigira a una pantalla donde indicando la respuesta a una pregunta secreta elegida a la hora de registrarse, tendran la opcion de actualizar la contraseña
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Perfil
 
-### `npm run build`
+- En el perfil se podra visualizar los datos del usuario, dando la posibilidad de editar el nombre, apellido, telefono y la contraseña.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Busqueda de recetas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Los visitantes de la WebApp podran buscar sus recetas favoritas, teniendo la posibilidad de filtrar por: Categoria, Ingredientes, Dificultad y Calificacion
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Funcionalidades solo para usuarios
 
-### `npm run eject`
+- Crear recetas: El usuario registrado podra crear recetas indicando titulo, ingredientes, dificultad, categorias, procedimiento y ademas adjuntar una imagen de la receta.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Modificar recetas: El usuario registrado podra modificar todos los datos de la receta mncionados en el punto anterior asi tambien como el estado en el que se encuentra (Activo: visible para todos los visitantes de la pagina. Borrador: visible unicamente para el usuario creador de la receta)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Eliminar recetas: El usuario registrado podra eliminar las recetas creadas por el mismo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Calificar: El usuario registrado podra calificar recetas de otros usuarios en base a sus gustos personales, pudiendo otorgar una calificacion entre 1 y 5 estrellas.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Pre-requisitos:
 
-## Learn More
+## Sistema Operativo:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+La aplicacion puede ser ejecutada en los sistemas operativos de : Microsoft, macOS y Linux.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Frameworks utilizados:
 
-### Code Splitting
+- ReactJs
+- NodeJs
+- Express
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Conocimiento
 
-### Analyzing the Bundle Size
+Se solicita tener un entendimiento basico de los frameworks mencionados anteriormente para poder seguir con el desarrollo de la WebApp de forma mas organica y tener un conocimiento tecnico acorde a las tecnologias utilizadas. Tambien se requiere un manejo de base de datos relacional para poder realizar consultas a la base de datos sin problemas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Instalacion.
 
-### Making a Progressive Web App
+## Repositorios:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+El Frontend y el Backend se encuentran en 2 diferentes repositorios de GitHub
 
-### Advanced Configuration
+### Frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[Backend](https://github.com/gabrielpicc/recetas_back)
 
-### Deployment
+### Backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[Frontend](https://github.com/gabrielpicc/PaginaRecetas)
 
-### `npm run build` fails to minify
+## Comandos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Se deberan ejecutar los siguientes comandos tanto para el Backend como el Frontend desde la carpeta raiz del proyecto
+
+### 1) instalar todas las librerias necesarias.
+
+```
+> npm install --legacy-peer-deps
+```
+
+### 2) Levantar el servidor de manera loccal.
+
+```
+> npm start
+```
+
+## Seteo de configuraciones - Variables de entorno.
+
+### Base de datos relacional:
+
+dentro de la carpeta `config` se encuentra el archivo `config.json` el cual contiene las variables necesarias para realizar la conexion a la base de datos.
+Se debera completar con los siguientes datos:
+
+```
+"username": "root",
+"password": "********",
+"database": "webrecetas",
+"host": "127.0.0.1",
+"dialect": "mysql",
+"operatorsAliases": false
+```
+
+### Repositorio externo para almacenar imagenes.
+
+Dentro del ImageController se encuentran las credenciales a cloudinary 
+
+```
+cloudinary.config({
+    cloud_name: 'matumolise',
+    api_key: '459727726443978',
+    api_secret: '********'
+});
+```
